@@ -1,0 +1,16 @@
+.burgerList {
+    width: 100%;
+    padding: 0.5rem 0;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    display: none;
+    background-color: white;
+    z-index: 100;
+}
+
+.burgerList.open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
