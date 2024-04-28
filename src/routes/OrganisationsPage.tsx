@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import OgranisationsPageSection from "../components/_organisations-page/OgranisationsPageSection";
 
 const OrganisationsPage = () => {
-  return (
-    <div>OrganisationsPage</div>
-  )
-}
+  return <OgranisationsPageSection />;
+};
 
-export default OrganisationsPage
+export default OrganisationsPage;

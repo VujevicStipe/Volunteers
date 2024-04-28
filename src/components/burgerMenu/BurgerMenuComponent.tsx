@@ -1,6 +1,6 @@
 import { useState } from "react";
 import burgerMenu from "../../../public/assets/burger-menu.svg";
-import NavListComponent from "../nav-list/NavListComponent";
+import NavListComponent from "../navList/NavListComponent";
 import styles from "./BurgerMenuComponent.module.css";
 
 const BurgerMenuComponent = () => {
@@ -14,7 +14,7 @@ const BurgerMenuComponent = () => {
     <div onClick={toggleMenu}>
       <img src={burgerMenu} alt="" />
       <div className={`${styles.burgerList} ${menuOpen && styles.open}`}>
-        {menuOpen && <NavListComponent variant="col" />}
+        {menuOpen && <NavListComponent variant="header" />}
       </div>
     </div>
   );

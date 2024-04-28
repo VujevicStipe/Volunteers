@@ -1,5 +1,6 @@
 .burgerList {
     width: 100%;
+    height: fit-content;
     padding: 0.5rem 0;
     position: absolute;
     top: 5rem;
@@ -13,4 +14,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    & > * {
+        display: flex;
+        flex-direction: column;
+    }
 }

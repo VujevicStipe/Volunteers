@@ -1,0 +1,49 @@
+.volunteerCard {
+    width: 100%;
+    min-width: 300px;
+    max-width: 450px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 1.8rem;
+    text-align: start;
+
+    .imgWrap {
+        height: 14rem;
+        border-radius: inherit;
+        overflow: hidden;
+        margin-bottom: 0.7rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+            transition: transform .3s ease-in-out;
+        }
+    }
+    & > *:last-child {
+        position: absolute;
+        right: 0;
+        bottom: 0.3rem;
+        transition: background 0.7s ease-in-out, color 0.2s ease-in-out;
+    }
+    & > ButtonComponent > img {
+        display: inline-block;
+    }
+    h4 {
+        color: #B5B5B5;
+    }
+    &:hover {
+        cursor: pointer;
+
+        .imgWrap > img {
+            transform: scale(1.1);
+        }
+        & > *:last-child {
+            background: linear-gradient(to right, #fc5c7d, #6a82fb);
+            color: white;
+        }
+    }
+}

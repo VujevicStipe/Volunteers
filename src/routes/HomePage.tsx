@@ -1,9 +1,7 @@
-import React from 'react'
+import HomePageSection from "../components/_home-page/HomePageSection";
 
 const HomePage = () => {
-  return (
-    <div>HomePage</div>
-  )
-}
+  return <HomePageSection />;
+};
 
-export default HomePage
+export default HomePage;

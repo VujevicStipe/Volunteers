@@ -1,9 +1,7 @@
-import React from 'react'
+import ActivitiesPageSection from "../components/_activities-page/ActivitiesPageSection";
 
 const ActivtiesPage = () => {
-  return (
-    <div>ActivtiesPage</div>
-  )
-}
+  return <ActivitiesPageSection />
+};
 
-export default ActivtiesPage
+export default ActivtiesPage;

@@ -1,15 +1,16 @@
-import HeaderComponent from '../components/header/HeaderComponent'
-import FooterComponent from '../components/footer/FooterComponent'
-import { Outlet } from 'react-router-dom'
+import HeaderComponent from "../components/header/HeaderComponent";
+import FooterComponent from "../components/footer/FooterComponent";
+import { Outlet } from "react-router-dom";
+import { RoleManagerProvider } from "../util/RoleManagerContext";
 
 const Layout = () => {
   return (
-    <div>
-        <HeaderComponent />
-        <Outlet />
-        <FooterComponent />
-    </div>
-  )
-}
+    <RoleManagerProvider>
+      <HeaderComponent />
+      <Outlet />
+      <FooterComponent />
+    </RoleManagerProvider>
+  );
+};
 
-export default Layout
+export default Layout;
