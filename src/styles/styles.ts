@@ -15,6 +15,7 @@ const TitleWrapBase = css`
   align-items: center;
 
   span {
+    margin-top: 0.5rem;
     width: 10rem;
     height: 2px;
     background: ${gradientColor};
@@ -33,6 +34,7 @@ export const TitleWrapH1 = styled.div`
 
 export const TitleWrapH2 = styled.div`
   ${TitleWrapBase}
+  margin-bottom: 2.8rem;
   h2 {
     color: black;
     width: 100%;

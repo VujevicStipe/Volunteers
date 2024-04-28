@@ -2,6 +2,7 @@ import styles from "./FooterComponent.module.css";
 import footerLogo from "../../../public/assets/volunteers-logo.svg";
 import gitHubLogo from "../../../public/assets/github-footer.svg";
 import linkedInLogo from "../../../public/assets/linkedin-footer.svg";
+import figmaLogo from "../../../public/assets/figma-logo.svg";
 import { NavLink } from "react-router-dom";
 import NavListComponent from "../navList/NavListComponent";
 import useWindowSize from "../../util/useWindowSize";
@@ -26,6 +27,11 @@ const FooterComponent = () => {
           </NavLink>
           <NavLink to={`https://www.linkedin.com/in/stipe-vujevicc/`}>
             <img src={linkedInLogo} alt="" />
+          </NavLink>
+          <NavLink
+            to={`https://www.figma.com/file/74YzjhDLJeiYPmCYOUrePN/VolunteersWeb?type=design&node-id=0%3A1&mode=design&t=IZw1Hw0NoTh621JM-1`}
+          >
+            <img src={figmaLogo} alt="" />
           </NavLink>
         </div>
         <div>
