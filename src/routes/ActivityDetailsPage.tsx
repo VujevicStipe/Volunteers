@@ -1,9 +1,5 @@
-import React from 'react'
-
 const ActivityDetailsPage = () => {
-  return (
-    <div>ActivityDetailsPage</div>
-  )
-}
+  return <div>ActivityDetailsPage</div>;
+};
 
-export default ActivityDetailsPage
+export default ActivityDetailsPage;

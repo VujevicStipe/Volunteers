@@ -1,9 +1,5 @@
-import React from 'react'
-
 const VolunteerDetailsPage = () => {
-  return (
-    <div>VolunteerDetailsPage</div>
-  )
-}
+  return <div>VolunteerDetailsPage</div>;
+};
 
-export default VolunteerDetailsPage
+export default VolunteerDetailsPage;

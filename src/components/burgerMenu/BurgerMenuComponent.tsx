@@ -14,7 +14,7 @@ const BurgerMenuComponent = () => {
     <div onClick={toggleMenu}>
       <img src={burgerMenu} alt="" />
       <div className={`${styles.burgerList} ${menuOpen && styles.open}`}>
-        {menuOpen && <NavListComponent variant="header" />}
+        {menuOpen && <NavListComponent variant="header" margin={false} />}
       </div>
     </div>
   );
