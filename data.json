@@ -1,5 +1,157 @@
 {
-    "volunteers": [],
-    "activities": [],
-    "organisations": []
+  "activities": [
+    {
+      "id": 1,
+      "title": "Help in Animal Shelter",
+      "description": "Volunteering at an animal shelter offers a rewarding opportunity to make a positive impact on the lives of animals in need. As a volunteer, you'll play a crucial role in caring for abandoned, injured, or neglected animals, providing them with love, attention, and essential care. Your responsibilities may include feeding and grooming animals, cleaning kennels and cages.",
+      "jobType": "Mental Health Advocate",
+      "organisation": "Compassionate Hearth Organisation",
+      "date": "2024-04-23",
+      "location": "Split"
+    },
+    {
+      "id": 2,
+      "title": "Helping Youth",
+      "description": "Volunteering at an animal shelter offers a rewarding opportunity to make ",
+      "jobType": "Animal Caretaker",
+      "organisation": "Compassionate Hearth Organisation",
+      "date": "2024-04-20",
+      "location": "Zagreb"
+    },
+    {
+      "id": 3,
+      "title": "Scholl in Ghanda",
+      "description": "Volunteering at an animal shelter offers a rewarding opportunity to make ",
+      "jobType": "Fundraiser",
+      "organisation": "Compassionate Hearth Organisation",
+      "date": "2024-04-20",
+      "location": "Šibenik"
+    },
+    {
+      "id": 4,
+      "title": "Scholl in Uganda",
+      "description": "Volunteering at an animal shelter offers a rewarding opportunity to make ",
+      "jobType": "Fundraiser",
+      "organisation": "Compassionate Hearth Organisation",
+      "date": "2024-04-23",
+      "location": "Šibenik"
+    },
+    {
+      "id": 5,
+      "title": "Teach science",
+      "description": "Volunteering at an animal shelter offers a rewarding opportunity to make ",
+      "jobType": "Fundraiser",
+      "organisation": "Compassionate Hearth Organisation",
+      "date": "2024-05-20",
+      "location": "Šibenik"
+    }
+  ],
+  "volunteers": [
+    {
+      "id": 1,
+      "name": "Steve",
+      "surname": "Gilgamesh",
+      "mobile": "0955507325",
+      "jobType": "Teaching Assistant",
+      "location": "Split",
+      "workExp": "true"
+    },
+    {
+      "id": 2,
+      "name": "Steve",
+      "surname": "Gilgamesh",
+      "mobile": "0955507325",
+      "jobType": "Animal Caretaker",
+      "location": "Split",
+      "workExp": "false"
+    },
+    {
+      "id": 3,
+      "name": "Steve",
+      "surname": "Gilgamesh",
+      "mobile": "0955507325",
+      "jobType": "Animal Caretaker",
+      "location": "Zadar",
+      "workExp": "false"
+    },
+    {
+      "id": 4,
+      "name": "Steve",
+      "surname": "Gilgamesh",
+      "mobile": "0955507325",
+      "jobType": "Youth Mentor",
+      "location": "Zadar",
+      "workExp": "false"
+    }
+  ],
+  "organisations": [
+    {
+      "id": "1",
+      "organisationName": "Hearh Organisation",
+      "adress": "Mosecka 86",
+      "city": "Split"
+    },
+    {
+      "id": "2",
+      "organisationName": "Hearh Organisation",
+      "adress": "Mosecka 86",
+      "city": "Split"
+    }
+  ],
+  "cities": [
+    {
+      "id": 1,
+      "city": "Split"
+    },
+    {
+      "id": 2,
+      "city": "Zadar"
+    },
+    {
+      "id": 3,
+      "city": "Zagreb"
+    },
+    {
+      "id": 4,
+      "city": "Šibenik"
+    },
+    {
+      "id": 5,
+      "city": "Dubrovnik"
+    },
+    {
+      "id": 6,
+      "city": "Osijek"
+    }
+  ],
+  "jobTypes": [
+    {
+      "id": 1,
+      "job": "Teaching Assistant"
+    },
+    {
+      "id": 2,
+      "job": "Event Coordinator"
+    },
+    {
+      "id": 3,
+      "job": "Fundraiser"
+    },
+    {
+      "id": 4,
+      "job": "Animal Caretaker"
+    },
+    {
+      "id": 5,
+      "job": "Community Outreach Organizer"
+    },
+    {
+      "id": 6,
+      "job": "Youth Mentor"
+    },
+    {
+      "id": 7,
+      "job": "Mental Health Advocate"
+    }
+  ]
 }

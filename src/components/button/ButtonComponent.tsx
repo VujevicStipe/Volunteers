@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import styles from "./ButtonComponent.module.css";
 
 interface ButtonProps {
-  type: "primaryBtn" | "toggleUserBtn" | "cardBtn" | "seeMoreBtn";
+  type: "primaryBtn" | "secondaryBtn" | "toggleUserBtn" | "cardBtn" | "seeMoreBtn";
   onClick?: () => void;
   children?: string | ReactNode;
 }
@@ -26,6 +26,9 @@ const ButtonComponent: React.FC<ButtonProps> = ({
       break;
     case "seeMoreBtn":
       btnStyle = styles.seeMoreBtn;
+      break;
+    case "secondaryBtn":
+      btnStyle = styles.secondaryBtn
       break;
   }
 

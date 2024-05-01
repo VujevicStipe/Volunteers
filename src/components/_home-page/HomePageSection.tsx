@@ -1,6 +1,5 @@
 import styles from "./HomePageSection.module.css";
 import ButtonComponent from "../button/ButtonComponent";
-import ActivityCard from "../cards/activityCard/ActivtiyCard";
 import { Link } from "react-router-dom";
 import { TitleWrapH2 } from "../../styles/styles";
 import heroBg1 from "../../../public/assets/hero-bg.svg";
@@ -18,11 +17,28 @@ import volInsLogo3 from "../../../public/assets/volInsLogo3.svg";
 import volInsImg from "../../../public/assets/volInsImage.png";
 import useWindowSize from "../../util/useWindowSize";
 import VolunteerCard from "../cards/volunteerCard/VolunteerCard";
+import ActivityCard from "../cards/activityCard/ActivityCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import apiUrl from "../../util/config";
 
 const HomePageSection = () => {
   const deviceType = useWindowSize();
 
-  console.log(deviceType);
+  const [activities, setActivities] = useState<Activity[]>([]);
+  useEffect(() => {
+    axios
+      .get(`${apiUrl}/activities`)
+      .then((res) => setActivities(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+  const [volunteers, setVolunteers] = useState<Volunteer[]>([]);
+  useEffect(() => {
+    axios
+      .get(`${apiUrl}/volunteers`)
+      .then((res) => setVolunteers(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className={`${styles.homePageSection} ${styles[deviceType]}`}>
@@ -53,9 +69,9 @@ const HomePageSection = () => {
           <h2>Explore volunteer activities</h2>
           <span></span>
         </TitleWrapH2>
-        <ActivityCard />
-        <ActivityCard />
-        <ActivityCard />
+        {activities.slice(0, 3).map((activity) => (
+          <ActivityCard key={activity.id} activity={activity}/>
+        ))}
       </div>
       <div className={styles.supportersShowcase}>
         <TitleWrapH2>
@@ -73,7 +89,7 @@ const HomePageSection = () => {
           <h2>Why volunteer?</h2>
           <span></span>
         </TitleWrapH2>
-        {deviceType == 'mobile' && <img src={volInsImg} alt="volInsImg" />}
+        {deviceType == "mobile" && <img src={volInsImg} alt="volInsImg" />}
         <div className={styles.content}>
           <div className={styles.item}>
             <img src={volInsLogo1} alt="volInsLogo1" />
@@ -106,17 +122,16 @@ const HomePageSection = () => {
             </div>
           </div>
         </div>
-        {deviceType != 'mobile' && <img src={volInsImg} alt="volInsImg" />}
+        {deviceType != "mobile" && <img src={volInsImg} alt="volInsImg" />}
       </div>
       <div className={styles.volunteersShowcase}>
         <TitleWrapH2>
           <h2>Meet other volunteers</h2>
           <span></span>
         </TitleWrapH2>
-        <VolunteerCard />
-        <VolunteerCard />
-        <VolunteerCard />
-        <VolunteerCard />
+        {volunteers.slice(0, 3).map((volunteer) => (
+          <VolunteerCard key={volunteer.id} volunteer={volunteer}/>
+        ))}
       </div>
     </div>
   );

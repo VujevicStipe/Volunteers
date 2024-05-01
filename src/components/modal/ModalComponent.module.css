@@ -1,0 +1,17 @@
+.modalStyle {
+    margin: auto;
+    width: 80%;
+    max-width: 1000px;
+    background-color: white;
+    height: fit-content;
+    border-radius: 2rem;
+    padding: 2rem 3rem;
+    background-color: #F6F8FA;
+    position: relative;
+
+    & > *:last-child {
+        position: absolute;
+        left: 2rem;
+        bottom: 2rem;
+    }
+}

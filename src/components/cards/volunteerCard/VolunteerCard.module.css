@@ -3,11 +3,36 @@
     min-width: 190px;
     max-width: 450px;
     height: fit-content;
+    position: relative;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
     
     img {
         border-radius: 50%;
         margin-bottom: 0.9rem;
         width: 100%;
         object-fit: contain;
+    }
+    &:hover img {
+        transform: scale(0.95);
+        transition: transform .3s ease-in-out;
+    }
+    h3 {
+        position: relative;
+    }
+    &::after {
+        content: ""; /* Dodajemo sadržaj pseudoelementu */
+        position: absolute; /* Postavljamo apsolutni položaj */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto; 
+        width: 0%; /* Širina */
+        height: 1px; /* Debljina linije */
+        background-image: linear-gradient(to right, #fc5c7d, #6a82fb);
+        transition: width .2s ease-in-out;
+    }
+    &:hover::after {
+        width: 50%;
     }
 }

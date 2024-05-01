@@ -17,11 +17,11 @@ const FooterComponent = () => {
           <NavLink to={"./"}>
             <img src={footerLogo} alt="" />
           </NavLink>
-          <h5>Copyright &copy; 2024</h5>
+          <h6>Copyright &copy; 2024</h6>
         </div>
 
         <div className={styles.mySocial}>
-          <h4>My Social Networks</h4>
+          <h5>My Social Networks</h5>
           <NavLink to={"https://github.com/VujevicStipe"}>
             <img src={gitHubLogo} alt="" />
           </NavLink>
@@ -35,11 +35,11 @@ const FooterComponent = () => {
           </NavLink>
         </div>
         <div>
-          <h4>Services</h4>
+          <h5>Services</h5>
           <NavListComponent variant="footer" margin={false} />
         </div>
         <div>
-          <h4>Partners</h4>
+          <h5>Partners</h5>
           <ul>
             <li>Unicef</li>
             <li>Habitat</li>

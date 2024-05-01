@@ -1,7 +1,7 @@
 import ActivitiesPageSection from "../components/_activities-page/ActivitiesPageSection";
 
-const ActivtiesPage = () => {
+const ActivitiesPage = () => {
   return <ActivitiesPageSection />
 };
 
-export default ActivtiesPage;
+export default ActivitiesPage;

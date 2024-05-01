@@ -1,5 +1,10 @@
+import { useParams } from "react-router-dom";
+import ActivityDetailsSection from "../components/_activityDetails-page/ActivityDetailsSection";
+
 const ActivityDetailsPage = () => {
-  return <div>ActivityDetailsPage</div>;
+  const { id } = useParams();
+
+  return <ActivityDetailsSection id={id} />
 };
 
 export default ActivityDetailsPage;

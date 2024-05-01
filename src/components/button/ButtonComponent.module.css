@@ -8,6 +8,7 @@
     cursor: pointer;
     font-family: inherit;
     font-size: 1rem;
+    text-transform: capitalize;
 }
 
 .primaryBtn {
@@ -15,6 +16,18 @@
     background-size: 150% 100%;
     background-image: linear-gradient(to right, #fc5c7d, #6a82fb);
     color: white;
+    transition: all .4s ease-in-out;
+
+    &:hover {
+        background-position: 90% 0;
+    }
+}
+
+.secondaryBtn {
+    padding: 0.7rem 1.5rem;
+    background-size: 150% 100%;
+    background-image: #CACACA;
+    color: #4F4F51;
     transition: all .4s ease-in-out;
 
     &:hover {

@@ -32,7 +32,7 @@
     & > ButtonComponent > img {
         display: inline-block;
     }
-    h4 {
+    h6 {
         color: #B5B5B5;
     }
     &:hover {

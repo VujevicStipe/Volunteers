@@ -8,7 +8,6 @@ const TitleWrapBase = css`
   width: 100%;
   height: 100%;
   min-height: 60px;
-  top: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,6 +37,7 @@ export const TitleWrapH2 = styled.div`
   h2 {
     color: black;
     width: 100%;
+    text-transform: capitalize;
   }
   span {
     width: 7rem;
