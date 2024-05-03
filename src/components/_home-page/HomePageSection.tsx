@@ -129,8 +129,8 @@ const HomePageSection = () => {
           <h2>Meet other volunteers</h2>
           <span></span>
         </TitleWrapH2>
-        {volunteers.slice(0, 3).map((volunteer) => (
-          <VolunteerCard key={volunteer.id} volunteer={volunteer}/>
+        {volunteers.slice(0, 4).map((volunteer) => (
+          <VolunteerCard key={volunteer.id} variant="volunteer" volunteer={volunteer}/>
         ))}
       </div>
     </div>

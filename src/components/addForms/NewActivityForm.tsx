@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from "react";
-import styles from "./NewActivityForm.module.css";
-import { TitleWrapH2 } from "../../styles/styles";
+import styles from './formStyles/AddFormStyles.module.css'
 import LocationInput from "../inputComponents/LocationInput";
-import TextInputComponent from "../inputComponents/TextInputComponent";
+import TextInputComponent from "../inputComponents/components/TextInputComponent";
 import DateInput from "../inputComponents/DateInput";
-import CategoryInput from "../inputComponents/CategoryInput/CategoryInput";
+import CategoryInput from "../inputComponents/CategoryInput";
 import ButtonComponent from "../button/ButtonComponent";
 import axios from "axios";
 import apiUrl from "../../util/config";
+import FormInfo from "./components/FormInfo";
+import { validateForm } from "../../util/validateForm";
 
 interface NewActivityFormProps<T> {
   update: React.Dispatch<React.SetStateAction<T>>;
+  showModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const NewActivityForm: React.FC<NewActivityFormProps<Activity[]>> = ({update}) => {
+const NewActivityForm: React.FC<NewActivityFormProps<Activity[]>> = ({
+  update,
+  showModal,
+}) => {
   const [newActivity, setNewActivity] = useState({
     title: "",
     description: "",
@@ -28,47 +33,36 @@ const NewActivityForm: React.FC<NewActivityFormProps<Activity[]>> = ({update}) =
   };
 
   const sendData = async () => {
-    if (
-      newActivity.title === "" ||
-      newActivity.description === "" ||
-      newActivity.jobType === "" ||
-      newActivity.organisation === "" ||
-      newActivity.date === "" ||
-      newActivity.location === ""
-    ) {
-      console.log("Molimo popunite sva polja.");
+    if (!validateForm(newActivity)) {
       return;
     }
-    
     console.log("added", newActivity);
-
-    axios.post(`${apiUrl}/activities`, newActivity, {
-      headers: {
-        "content-type": "application/json"
-      }
-    }).then((res) => {
-      update((prevState:any) => [...prevState, res.data])
-    }).catch((err) => console.log(err))
+    axios
+      .post(`${apiUrl}/activities`, newActivity, {
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+      .then((res) => {
+        update((prevState: any) => [...prevState, res.data]);
+        showModal(false);
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
     console.log(newActivity);
   }, [newActivity]);
 
+  const title = "Contribute to Your Community";
+  const subtitle = "add activity";
+  const paragraph = `Complete the form below to add a new volunteering activity. Your 
+  contribution will help create positive change in the community. Let's 
+  work together to make a difference!`;
+
   return (
-    <div className={styles.newActivity}>
-      <div className={styles.formInfo}>
-        <h6>Contribute to Your Community</h6>
-        <TitleWrapH2>
-          <h2>add activity</h2>
-          <span></span>
-        </TitleWrapH2>
-        <p>
-          Complete the form below to add a new volunteering activity. Your
-          contribution will help create positive change in the community. Let's
-          work together to make a difference!
-        </p>
-      </div>
+    <div className={styles.container}>
+      <FormInfo title={title} subtitle={subtitle} paragraph={paragraph} />
       <div className={styles.form}>
         <TextInputComponent
           type="text"
@@ -96,7 +90,9 @@ const NewActivityForm: React.FC<NewActivityFormProps<Activity[]>> = ({update}) =
           <DateInput onChange={handleInputChange} />
           <LocationInput onChange={handleInputChange} />
         </div>
-        <ButtonComponent onClick={() => sendData()} type="primaryBtn">Share activity</ButtonComponent>
+        <ButtonComponent onClick={() => sendData()} type="primaryBtn">
+          Share activity
+        </ButtonComponent>
       </div>
     </div>
   );

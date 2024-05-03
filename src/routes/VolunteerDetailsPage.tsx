@@ -1,5 +1,9 @@
+import { useParams } from "react-router-dom";
+import VolunteerDetailsSection from "../components/_volunteerDetails-page/VolunteerDetailsSection";
+
 const VolunteerDetailsPage = () => {
-  return <div>VolunteerDetailsPage</div>;
+  const { id } = useParams();
+  return <VolunteerDetailsSection id={id} />;
 };
 
 export default VolunteerDetailsPage;

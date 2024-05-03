@@ -1,0 +1,12 @@
+.ratingCard {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+
+    .wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+}

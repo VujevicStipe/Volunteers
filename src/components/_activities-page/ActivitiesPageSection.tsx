@@ -32,23 +32,9 @@ const ActivitiesPageSection: React.FC = () => {
     setFilters({ ...filters, [name]: value });
   };
 
-  useEffect(() => {
-    console.log(filters)
-  }, [filters])
-
-  useEffect(() => {
-    const filtered = activities.filter((activity) =>
-      Object.entries(filters).every(
-        ([key, value]) => !value || activity[key] === value
-      )
-    );
-    setFilteredActivities(filtered);
-  }, [filters, activities]);
-
   const [numOfActivities, setNumOfActivities] = useState<number>(0);
   useEffect(() => {
     setNumOfActivities(activities.length);
-    console.log(numOfActivities);
   }, [activities.length]);
 
   const title = "Explore Volonteer Activities";
@@ -67,8 +53,10 @@ const ActivitiesPageSection: React.FC = () => {
           add new activity
         </ButtonComponent>
         <FilterComponent
+          items={activities}
           filters={filters}
           onFilterChange={handleFilterChange}
+          setFilteredItems={setFilteredActivities}
         />
       </div>
       <div className={styles.activitiesList}>
@@ -76,7 +64,12 @@ const ActivitiesPageSection: React.FC = () => {
           <ActivityCard key={activity.id} activity={activity} />
         ))}
       </div>
-      <ModalComponent variant="newActivity" showModal={showModal} setShowModal={setShowModal} update={setActivities} />
+      <ModalComponent
+        variant="newActivity"
+        showModal={showModal}
+        setShowModal={setShowModal}
+        update={setActivities}
+      />
     </div>
   );
 };

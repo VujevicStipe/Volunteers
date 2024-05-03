@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import apiUrl from "../../../util/config";
-import CategoryRadioComponent from "./categoryComponents/CategoryRadioComponent";
-import CategorySelectComponent from "./categoryComponents/CategorySelectComponent";
+import apiUrl from "../../util/config";
+import SelectInputComponent from "./components/SelectInputComponent";
+import RadioInputComponent from "./components/RadioInputComponent";
 
 interface CategoryInputProps {
   variant: "filter" | "input";
@@ -29,13 +29,21 @@ const CategoryInput: React.FC<CategoryInputProps> = ({ variant, onChange }) => {
   return (
     <>
       {variant == "filter" ? (
-        <CategoryRadioComponent
+        <RadioInputComponent
           data={jobTypes}
+          name="jobType"
+          label="Categories"
           onChange={onChange}
           myRef={defaultCategoryRef}
         />
       ) : (
-        <CategorySelectComponent data={jobTypes} onChange={onChange} />
+        <SelectInputComponent
+          data={jobTypes}
+          variant="category"
+          label="Job Type"
+          name="jobType"
+          onChange={onChange}
+        />
       )}
     </>
   );

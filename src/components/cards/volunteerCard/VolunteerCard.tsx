@@ -1,16 +1,23 @@
-import stlyes from "./VolunteerCard.module.css";
-import user1 from "../../../../public/assets/volunteerAvatar1.jpg";
+import { Link } from "react-router-dom";
+import VolunteerCardInfoCompontent from "./components/VolunteerCardInfoCompontent";
 
 interface VolunteerCardProps {
-  volunteer: Volunteer;
+  volunteer: Volunteer | VolunteerForJob;
+  variant: "volunteer" | "volunteerApply";
 }
 
-const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
+const VolunteerCard: React.FC<VolunteerCardProps> = ({
+  volunteer,
+  variant,
+}) => {
   return (
-    <div className={stlyes.volunteerCard}>
-      <img src={user1} alt="user1" />
-      <h4>{volunteer.name} {volunteer.surname}</h4>
-    </div>
+    variant === "volunteer" && 'id' in volunteer ? (
+      <Link to={`/volunteers/details/${(volunteer as Volunteer).id}`}>
+        <VolunteerCardInfoCompontent variant={variant} volunteer={volunteer} />
+      </Link>
+    ) : (
+      <VolunteerCardInfoCompontent variant={variant} volunteer={volunteer} />
+    )
   );
 };
 

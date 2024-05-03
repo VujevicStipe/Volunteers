@@ -7,6 +7,7 @@ interface TextInputComponentProps {
   label: string;
   name: string;
   multiline: boolean;
+  value?: string;
   onChange: (name: string, value: string) => void;
 }
 
@@ -16,6 +17,7 @@ const TextInputComponent: React.FC<TextInputComponentProps> = ({
   name,
   onChange,
   multiline,
+  value,
 }) => {
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,6 +38,7 @@ const TextInputComponent: React.FC<TextInputComponentProps> = ({
         type={type}
         name={name}
         label={label}
+        value={value}
         variant="standard"
         multiline={multiline ? true : false}
         onChange={handleChange}

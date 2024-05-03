@@ -1,25 +1,34 @@
 import React, { ChangeEvent } from "react";
-import styles from "../../InputComponents.module.css";
+import styles from '../inputStyles/InputComponents.module.css';
 import { Radio, FormControlLabel, RadioGroup } from "@mui/material";
 
-interface CategoryRadioComponentProps {
-  data: MyJobType[];
-  onChange: (name: string, value: string) => void;
+interface RadioInputComponentProps<T> {
+  data: T[];
+  name: string;
+  label: string;
   myRef: React.RefObject<HTMLInputElement>;
+  onChange: (name: string, value: string) => void;
 }
 
-const CategoryRadioComponent: React.FC<CategoryRadioComponentProps> = ({
+const RadioInputComponent: React.FC<RadioInputComponentProps<MyJobType>> = ({
   data,
+  name,
+  label,
   onChange,
   myRef,
 }) => {
+
+  if (!data || !label || !name) {
+    return null;
+  }
+
   const handleCategChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange("jobType", event.target.value);
+    onChange(name, event.target.value);
   };
 
   return (
     <div className={styles.categoryFilter}>
-      <h4>Categories</h4>
+      <h4>{label}</h4>
       <RadioGroup defaultValue="">
         <div>
           <FormControlLabel
@@ -28,25 +37,25 @@ const CategoryRadioComponent: React.FC<CategoryRadioComponentProps> = ({
                 inputRef={myRef}
                 sx={{ padding: "7px" }}
                 value=""
-                name="jobType"
+                name={name}
                 onChange={handleCategChange}
               />
             }
             label="Any Category"
           />
         </div>
-        {data.map((jobType) => (
-          <div key={jobType.id}>
+        {data.map((item) => (
+          <div key={item.id}>
             <FormControlLabel
               control={
                 <Radio
                   onChange={handleCategChange}
-                  value={jobType.job}
-                  name="jobType"
+                  value={item.job}
+                  name={name}
                   sx={{ padding: "7px" }}
                 />
               }
-              label={jobType.job}
+              label={item.job}
             />
           </div>
         ))}
@@ -55,4 +64,4 @@ const CategoryRadioComponent: React.FC<CategoryRadioComponentProps> = ({
   );
 };
 
-export default CategoryRadioComponent;
+export default RadioInputComponent;

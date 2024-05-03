@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import stlyes from "./InputComponents.module.css";
+import styles from "./inputStyles/InputComponents.module.css";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -35,7 +35,7 @@ const DateInput: React.FC<DateInputProps> = ({ onChange }) => {
   }, [cleared]);
 
   return (
-    <div className={stlyes.dateFilter}>
+    <div className={styles.dateFilter}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Box
           sx={{
@@ -50,7 +50,7 @@ const DateInput: React.FC<DateInputProps> = ({ onChange }) => {
             label="Date"
             name="date"
             onChange={(newValue) => setSelectedDate(newValue)}
-            sx={{ width: '260px' }}
+            sx={{ width: "260px" }}
             slotProps={{
               field: { clearable: true, onClear: () => setCleared(true) },
             }}

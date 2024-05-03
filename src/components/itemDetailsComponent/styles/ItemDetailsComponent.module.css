@@ -1,0 +1,55 @@
+.itemContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        width: 47%;
+        min-height: 20rem;
+        object-fit: cover;
+        border-radius: 1.8rem;
+    }
+    .info {
+        width: 47%;
+        min-width: 400px;
+        min-height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: start;
+        
+        .wrapper {
+            height: fit-content;
+            margin: 0.5rem 0;
+
+            & > *:last-child {
+                height: fit-content;
+                align-items: flex-start;
+                margin-bottom: 1rem;
+            }
+            h6 {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                font-weight: 100;
+                color: #9C9C9C;
+                font-size: calc(0.6rem + 0.3vw);
+
+                & > *:last-child {
+                    margin-right: 0.7rem;
+                }
+            }
+        }
+    }
+    .volunteerUserImg {
+        width: 27%;
+        min-width: 300px;
+        border-radius: 50%;
+    }
+    .volunteerInfo {
+        width: 63%;
+    }
+}

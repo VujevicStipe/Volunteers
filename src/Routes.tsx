@@ -6,7 +6,7 @@ import VolunteersPage from "./routes/VolunteersPage";
 import OrganisationsPage from "./routes/OrganisationsPage";
 import ActivityDetailsPage from "./routes/ActivityDetailsPage";
 import VolunteerDetailsPage from "./routes/VolunteerDetailsPage";
-import ScrollToTop from "./util/ScrollToTop";
+import ScrollToTop from "./util/scrollToTop";
 
 function Root() {
   return (
@@ -20,9 +20,11 @@ function Root() {
             path="/activities/details/:id"
             element={<ActivityDetailsPage />}
           />
-          <Route path="/volunteers" element={<VolunteersPage />}>
-            <Route path=":id" element={<VolunteerDetailsPage />} />
-          </Route>
+          <Route path="/volunteers" element={<VolunteersPage />} />
+          <Route 
+            path="/volunteers/details/:id"
+            element={<VolunteerDetailsPage />}
+          />
           <Route path="/organisations" element={<OrganisationsPage />} />
         </Route>
       </Routes>

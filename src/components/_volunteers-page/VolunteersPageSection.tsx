@@ -12,7 +12,6 @@ const VolunteersPageSection: React.FC = () => {
   const [volunteers, setVolunteers] = useState<Volunteer[]>([]);
   const [filteredVolunteers, setFilteredVolunteers] = useState<Volunteer[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const title = "Meet Other Volunteers";
 
   useEffect(() => {
     axios
@@ -22,31 +21,28 @@ const VolunteersPageSection: React.FC = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-  
+
   const [filters, setFilters] = useState({
     location: "",
     jobType: "",
     workExp: "",
-  })
+  });
 
   const handleFilterChange = (name: string, value: string) => {
-    setFilters({...filters, [name]: value})
-  }
+    setFilters({ ...filters, [name]: value });
+  };
 
   useEffect(() => {
-    const filtered = volunteers.filter((volunteer) =>
-      Object.entries(filters).every(
-        ([key, value]) => !value || (volunteer as any)[key] === value
-      )
-    );
-    setFilteredVolunteers(filtered);
-  }, [filters, volunteers]);
+    console.log(filteredVolunteers)
+  }, [filteredVolunteers])
 
   const [numOfVolunteers, setNumOfVolunteers] = useState<number>(0);
   useEffect(() => {
     setNumOfVolunteers(volunteers.length);
     console.log(numOfVolunteers);
   }, [volunteers.length]);
+
+  const title = "Meet Other Volunteers";
 
   return (
     <div className={styles.volunteersPageSection}>
@@ -56,15 +52,30 @@ const VolunteersPageSection: React.FC = () => {
           <h3>Volunteers</h3>
           <h4>({numOfVolunteers})</h4>
         </div>
-        <ButtonComponent type="primaryBtn" onClick={() => setShowModal(!showModal)}>add new volunteer</ButtonComponent>
-        <FilterComponent filters={filters} onFilterChange={handleFilterChange} />
+        <ButtonComponent
+          type="primaryBtn"
+          onClick={() => setShowModal(!showModal)}
+        >
+          add new volunteer
+        </ButtonComponent>
+        <FilterComponent
+          items={volunteers}
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          setFilteredItems={setFilteredVolunteers}
+        />
       </div>
       <div className={styles.volunteersList}>
         {filteredVolunteers.map((volunteer) => (
-          <VolunteerCard key={volunteer.id} volunteer={volunteer} />
+          <VolunteerCard key={volunteer.id} volunteer={volunteer} variant="volunteer" />
         ))}
       </div>
-      <ModalComponent type="newVolunteer" showModal={showModal} setShowModal={setShowModal} />
+      <ModalComponent
+        variant="newVolunteer"
+        showModal={showModal}
+        setShowModal={setShowModal}
+        update={setVolunteers}
+      />
     </div>
   );
 };
