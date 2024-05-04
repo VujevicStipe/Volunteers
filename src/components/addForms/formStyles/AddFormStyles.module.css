@@ -1,11 +1,14 @@
 .container {
+    width: 100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
 
     & > *:first-child {
         width: 35%;
+        min-width: 180px;
         height: fit-content;
         display: flex;
         flex-direction: column;
@@ -45,6 +48,34 @@
             & > * {
                 width: 48%;
             }
+        }
+    }
+}
+
+/* tablet */
+
+.container.tablet {
+    & > * {
+        width: 34%;
+        max-width: 560px;
+    }
+    .form {
+        width: 50%;
+    }
+}
+
+/* mobile */
+
+.container.mobile {
+
+    margin: 0;
+    padding: 0;
+
+    & > * {
+        width: 100%;
+
+        & > *:nth-child(2) {
+            margin-bottom: 0.7rem;
         }
     }
 }

@@ -5,9 +5,11 @@ import { CiCalendarDate } from "react-icons/ci";
 import { GoLocation } from "react-icons/go";
 import { MdOutlineWorkOutline } from "react-icons/md";
 import { GoVerified } from "react-icons/go";
+import { BsTelephoneInbound } from "react-icons/bs";
 import { TitleWrapH2 } from "../../styles/styles";
 import actImg from "../../../public/assets/activity-img.png";
 import ButtonComponent from "../button/ButtonComponent";
+import useWindowSize from "../../util/useWindowSize";
 
 interface ItemDetailsComponentProps {
   data?: Activity | Volunteer;
@@ -20,6 +22,9 @@ const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
   variant,
   onClick,
 }) => {
+
+  const deviceType = useWindowSize()
+  
   if (!data) {
     return null;
   }
@@ -101,6 +106,10 @@ const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
                   <MdOutlineWorkOutline />
                   {volunteerData.jobType}
                 </h6>
+                <h6>
+                  <BsTelephoneInbound />
+                  {volunteerData.contactNumber}
+                </h6>
               </div>
             </div>
           </>
@@ -109,7 +118,7 @@ const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
       break;
   }
 
-  return <div className={styles.itemContent}>{itemData && itemData()}</div>;
+  return <div className={`${styles.itemContent} ${styles[deviceType]}`}>{itemData && itemData()}</div>;
 };
 
 export default ItemDetailsComponent;

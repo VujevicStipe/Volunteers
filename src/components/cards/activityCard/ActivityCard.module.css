@@ -1,7 +1,6 @@
 .activityCard {
     width: 100%;
     min-width: 190px;
-    max-width: 450px;
     height: fit-content;
     display: flex;
     flex-direction: column;

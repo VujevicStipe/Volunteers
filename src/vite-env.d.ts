@@ -21,7 +21,7 @@ type Rating = {
   name: string;
   surname: string;
   comment: string;
-}
+};
 
 type Activity = {
   id: string;
@@ -31,6 +31,7 @@ type Activity = {
   date: string;
   location: string;
   [key: string]: any;
+  volunteersForActivity: VolunteerForJob[];
 };
 
 type Volunteer = {
@@ -38,12 +39,13 @@ type Volunteer = {
   name: string;
   surname: string;
   description: string;
-  mobile: string;
+  contactNumber: string;
   jobType: string;
   location: string;
   workExperience: boolean;
-  gender: string,
+  gender: string;
   userImg: string;
+  volunteerRating: Rating[];
 };
 
 type VolunteerForJob = {
@@ -51,7 +53,7 @@ type VolunteerForJob = {
   surname: string;
   gender: string;
   userImg: string;
-}
+};
 
 type Organisations = {
   id: string;

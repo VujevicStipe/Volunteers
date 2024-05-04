@@ -7,8 +7,12 @@ import ActivityCard from "../cards/activityCard/ActivityCard";
 import FilterComponent from "../filter/FilterComponent";
 import ButtonComponent from "../button/ButtonComponent";
 import ModalComponent from "../modal/ModalComponent";
+import useWindowSize from "../../util/useWindowSize";
+import AccordionComponent from "../accordion/AccordionComponent";
 
 const ActivitiesPageSection: React.FC = () => {
+  const deviceType = useWindowSize();
+
   const [activities, setActivities] = useState<Activity[]>([]);
   const [filteredActivities, setFilteredActivities] = useState<Activity[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -39,7 +43,7 @@ const ActivitiesPageSection: React.FC = () => {
 
   const title = "Explore Volonteer Activities";
   return (
-    <div className={styles.activitiesPageSection}>
+    <div className={`${styles.activitiesPageSection} ${styles[deviceType]}`}>
       <BannerComponent pic="activities" title={title} />
       <div className={styles.activitiesFilter}>
         <div className={styles.filterHeading}>
@@ -52,12 +56,23 @@ const ActivitiesPageSection: React.FC = () => {
         >
           add new activity
         </ButtonComponent>
-        <FilterComponent
-          items={activities}
-          filters={filters}
-          onFilterChange={handleFilterChange}
-          setFilteredItems={setFilteredActivities}
-        />
+        {deviceType !== "mobile" ? (
+          <FilterComponent
+            items={activities}
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            setFilteredItems={setFilteredActivities}
+          />
+        ) : (
+          <AccordionComponent>
+            <FilterComponent
+              items={activities}
+              filters={filters}
+              onFilterChange={handleFilterChange}
+              setFilteredItems={setFilteredActivities}
+            />
+          </AccordionComponent>
+        )}
       </div>
       <div className={styles.activitiesList}>
         {filteredActivities.map((activity) => (
@@ -69,6 +84,7 @@ const ActivitiesPageSection: React.FC = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         update={setActivities}
+        itemId=""
       />
     </div>
   );

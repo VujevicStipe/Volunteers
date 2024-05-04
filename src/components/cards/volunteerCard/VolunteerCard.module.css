@@ -1,7 +1,6 @@
 .volunteerCard {
     width: 100%;
     min-width: 190px;
-    max-width: 450px;
     height: fit-content;
     position: relative;
     cursor: pointer;

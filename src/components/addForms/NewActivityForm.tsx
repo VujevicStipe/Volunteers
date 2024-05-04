@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from './formStyles/AddFormStyles.module.css'
+import styles from "./formStyles/AddFormStyles.module.css";
 import LocationInput from "../inputComponents/LocationInput";
 import TextInputComponent from "../inputComponents/components/TextInputComponent";
 import DateInput from "../inputComponents/DateInput";
@@ -9,16 +9,20 @@ import axios from "axios";
 import apiUrl from "../../util/config";
 import FormInfo from "./components/FormInfo";
 import { validateForm } from "../../util/validateForm";
+import useWindowSize from "../../util/useWindowSize";
 
 interface NewActivityFormProps<T> {
   update: React.Dispatch<React.SetStateAction<T>>;
   showModal: React.Dispatch<React.SetStateAction<boolean>>;
+  itemId?: string;
 }
 
 const NewActivityForm: React.FC<NewActivityFormProps<Activity[]>> = ({
   update,
   showModal,
 }) => {
+  const deviceType = useWindowSize();
+
   const [newActivity, setNewActivity] = useState({
     title: "",
     description: "",
@@ -26,9 +30,15 @@ const NewActivityForm: React.FC<NewActivityFormProps<Activity[]>> = ({
     organisation: "",
     date: "",
     location: "",
+    volunteersForActivity: [],
   });
 
   const handleInputChange = (name: string, value: string) => {
+    if (name === "title" || name === "description" || name === "organisation") {
+      if (value !== null && typeof value === "string") {
+        value = value.charAt(0).toUpperCase() + value.slice(1);
+      }
+    }
     setNewActivity({ ...newActivity, [name]: value });
   };
 
@@ -61,12 +71,13 @@ const NewActivityForm: React.FC<NewActivityFormProps<Activity[]>> = ({
   work together to make a difference!`;
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles[deviceType]}`}>
       <FormInfo title={title} subtitle={subtitle} paragraph={paragraph} />
       <div className={styles.form}>
         <TextInputComponent
           type="text"
           name="title"
+          value={newActivity.title}
           label="Title"
           multiline={false}
           onChange={handleInputChange}
@@ -74,6 +85,7 @@ const NewActivityForm: React.FC<NewActivityFormProps<Activity[]>> = ({
         <TextInputComponent
           type="text"
           name="description"
+          value={newActivity.description}
           label="Description"
           multiline={true}
           onChange={handleInputChange}
@@ -81,6 +93,7 @@ const NewActivityForm: React.FC<NewActivityFormProps<Activity[]>> = ({
         <TextInputComponent
           type="text"
           name="organisation"
+          value={newActivity.organisation}
           label="Organisation"
           multiline={false}
           onChange={handleInputChange}

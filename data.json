@@ -7,159 +7,107 @@
       "jobType": "Mental Health Advocate",
       "organisation": "Compassionate Hearth Organisation",
       "date": "2024-04-23",
-      "location": "Split"
+      "location": "Split",
+      "volunteersForActivity": [
+        {
+          "name": "Ante",
+          "surname": "Mikic",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/9.jpg"
+        },
+        {
+          "name": "Petar",
+          "surname": "Pan",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/22.jpg"
+        },
+        {
+          "name": "Mira",
+          "surname": "Maric",
+          "gender": "women",
+          "userImg": "https://randomuser.me/api/portraits/women/79.jpg"
+        },
+        {
+          "name": "Ana",
+          "surname": "Bekuta",
+          "gender": "women",
+          "userImg": "https://randomuser.me/api/portraits/women/71.jpg"
+        },
+        {
+          "name": "Asd",
+          "surname": "Asd",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/54.jpg"
+        }
+      ]
     },
     {
-      "id": "2",
-      "title": "Helping Youth",
-      "description": "Volunteering at an animal shelter offers a rewarding opportunity to make ",
+      "id": "12e1",
+      "title": "Test",
+      "description": "Test",
+      "jobType": "Event Coordinator",
+      "organisation": "Test",
+      "date": "2024-05-28",
+      "location": "Zadar",
+      "volunteersForActivity": [
+        {
+          "name": "Mile",
+          "surname": "Kekin",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/33.jpg"
+        },
+        {
+          "name": "Amer",
+          "surname": "Ikanac",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/93.jpg"
+        }
+      ]
+    },
+    {
+      "id": "fda0",
+      "title": "Uganda",
+      "description": "Asdasdasd",
       "jobType": "Animal Caretaker",
-      "organisation": "Compassionate Hearth Organisation",
-      "date": "2024-04-20",
-      "location": "Zagreb"
-    },
-    {
-      "id": "3",
-      "title": "Scholl in Ghanda",
-      "description": "Volunteering at an animal shelter offers a rewarding opportunity to make ",
-      "jobType": "Fundraiser",
-      "organisation": "Compassionate Hearth Organisation",
-      "date": "2024-04-20",
-      "location": "Šibenik"
-    },
-    {
-      "id": "4",
-      "title": "Scholl in Uganda",
-      "description": "Volunteering at an animal shelter offers a rewarding opportunity to make ",
-      "jobType": "Fundraiser",
-      "organisation": "Compassionate Hearth Organisation",
-      "date": "2024-04-23",
-      "location": "Šibenik"
-    },
-    {
-      "id": "5",
-      "title": "Teach science",
-      "description": "Volunteering at an animal shelter offers a rewarding opportunity to make ",
-      "jobType": "Fundraiser",
-      "organisation": "Compassionate Hearth Organisation",
-      "date": "2024-05-20",
-      "location": "Šibenik"
-    },
-    {
-      "id": "9230",
-      "title": "test",
-      "description": "test",
-      "jobType": "Youth Mentor",
-      "organisation": "test",
-      "date": "2024-05-31",
-      "location": "Dubrovnik"
-    },
-    {
-      "id": "e046",
-      "title": "213",
-      "description": "wqqweq",
-      "jobType": "Fundraiser",
-      "organisation": "qwewqe",
-      "date": "2024-05-23",
-      "location": "Šibenik"
+      "organisation": "Ugadnici",
+      "date": "2024-05-28",
+      "location": "Zagreb",
+      "volunteersForActivity": [
+        {
+          "name": "Mile",
+          "surname": "Kupina",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/79.jpg"
+        }
+      ]
     }
   ],
   "volunteers": [
     {
-      "id": "7905",
-      "name": "ana",
-      "surname": "anic",
-      "description": "",
-      "contactNumber": "123123",
-      "jobType": "Fundraiser",
-      "location": "Zagreb",
-      "workExp": "",
-      "gender": "women",
-      "userImg": "https://randomuser.me/api/portraits/women/32.jpg"
-    },
-    {
-      "id": "b855",
-      "name": "Peter",
-      "surname": "Pan",
-      "description": "",
-      "contactNumber": "1212312",
-      "jobType": "Event Coordinator",
-      "location": "Zadar",
-      "workExp": "true",
-      "gender": "men",
-      "userImg": "https://randomuser.me/api/portraits/men/32.jpg"
-    },
-    {
-      "id": "b002",
-      "name": "Marta",
-      "surname": "Milic",
-      "description": "",
-      "contactNumber": "123121",
-      "jobType": "Fundraiser",
-      "location": "Zadar",
-      "workExp": "true",
-      "gender": "women",
-      "userImg": "https://randomuser.me/api/portraits/women/41.jpg"
-    },
-    {
-      "id": "f568",
-      "name": "Ana",
-      "surname": "Maric",
-      "description": "",
-      "contactNumber": "12311",
-      "jobType": "Fundraiser",
-      "location": "Zadar",
-      "workExp": "true",
-      "gender": "women",
-      "userImg": "https://randomuser.me/api/portraits/women/17.jpg"
-    },
-    {
-      "id": "1488",
-      "name": "Petar",
-      "surname": "ZlatniPan",
-      "description": "",
-      "contactNumber": "111111",
+      "id": "e206",
+      "name": "Mile",
+      "surname": "Kekin",
+      "description": "Dedicated volunteer with a passion for community service. Over the past five years, she has actively contributed to various local organizations, including homeless shelters, animal rescues, and environmental conservation groups. Her roles have ranged from hands-on activities such as serving meals and walking shelter dogs to strategic planning and fundraising initiatives",
+      "contactNumber": "1231231",
       "jobType": "Animal Caretaker",
       "location": "Zagreb",
       "workExp": "true",
       "gender": "men",
-      "userImg": "https://randomuser.me/api/portraits/men/73.jpg"
-    },
-    {
-      "id": "47f1",
-      "name": "Petra",
-      "surname": "Peric",
-      "description": "",
-      "contactNumber": "1213",
-      "jobType": "Event Coordinator",
-      "location": "Osijek",
-      "workExp": "true",
-      "gender": "women",
-      "userImg": "https://randomuser.me/api/portraits/women/79.jpg"
-    },
-    {
-      "id": "ce1d",
-      "name": "Lana",
-      "surname": "Bozic",
-      "description": "",
-      "contactNumber": "11231211",
-      "jobType": "Mental Health Advocate",
-      "location": "Zadar",
-      "workExp": "true",
-      "gender": "women",
-      "userImg": "https://randomuser.me/api/portraits/women/21.jpg"
-    },
-    {
-      "id": "e871",
-      "name": "lile",
-      "surname": "lila",
-      "description": "asdhjef oijda sofjo qaehfoae hasdh jef oij dasofj oq aeh foa ehasd hj efoijd asofjoq asdhjef oijda sofjo qaehfoae hasdh jef oij dasofj oq aeh foa ehasd hj efoijd asofj",
-      "contactNumber": "12312312",
-      "jobType": "Animal Caretaker",
-      "location": "Zadar",
-      "workExp": "true",
-      "gender": "women",
-      "userImg": "https://randomuser.me/api/portraits/women/19.jpg"
+      "userImg": "https://randomuser.me/api/portraits/men/57.jpg",
+      "volunteerRating": [
+        {
+          "grade": 5,
+          "name": "Lipa",
+          "surname": "Kaja",
+          "comment": "This volunteer embodied the true spirit of service, approaching each task with enthusiasm and a genuine desire to make a difference. Their tireless efforts and unwavering dedication were evident from the moment they stepped onto the volunteer site."
+        },
+        {
+          "grade": 2.5,
+          "name": "Ana",
+          "surname": "Anic",
+          "comment": "This volunteer embodied the true spirit of service, approaching each task with enthusiasm and a genuine desire to make a difference. "
+        }
+      ]
     }
   ],
   "organisations": [

@@ -27,7 +27,7 @@ const RatingCardComponent: React.FC<RatingCardComponentProps> = ({ data }) => {
       <h6>
         {data.name} {data.surname}
       </h6>
-      {data && <RatingInputComponent readOnly={true} value={data.grade} />}
+      {data && <RatingInputComponent sizeLg={false} readOnly={true} value={data.grade} />}
       <p>{data?.comment}</p>
     </div>
   );

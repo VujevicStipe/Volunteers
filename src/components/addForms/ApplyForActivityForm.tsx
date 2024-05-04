@@ -6,16 +6,31 @@ import SelectInputComponent from "../inputComponents/components/SelectInputCompo
 import ButtonComponent from "../button/ButtonComponent";
 import { fetchUserImg } from "../../util/fetchUserImg";
 import { validateForm } from "../../util/validateForm";
+import useWindowSize from "../../util/useWindowSize";
+import axios from "axios";
 
 interface ApplyForActivityFormProps<T> {
   update: React.Dispatch<React.SetStateAction<T>>;
   showModal: React.Dispatch<React.SetStateAction<boolean>>;
+  itemId: string;
 }
 
 const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
   update,
   showModal,
+  itemId,
 }) => {
+
+  if(!itemId) {
+    return null
+  }
+
+  const deviceType = useWindowSize()
+
+  useEffect(() => {
+    console.log(defineID(itemId))
+  }, [])
+
   const [applyVolunteer, setApplyVolunteer] = useState({
     name: "",
     surname: "",
@@ -24,6 +39,11 @@ const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
   });
 
   const handleInputChange = (name: string, value: string) => {
+    if (name === "name" || name === "surname") {
+      if (value !== null && typeof value === "string") {
+        value = value.charAt(0).toUpperCase() + value.slice(1);
+      }
+    }
     setApplyVolunteer({ ...applyVolunteer, [name]: value });
   };
 
@@ -37,11 +57,34 @@ const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
     console.log(applyVolunteer.gender);
   }, [applyVolunteer.gender]);
 
+  const defineID = (id: string) => {
+    return id
+      ? id.replace(":", "")
+      : (console.log("can't define url"), undefined);
+  };
+
+  const addVolunteerToActivity = async () => {
+    const definedId = defineID(itemId)
+    try {
+      const response = await axios.get(`http://localhost:3001/activities/${definedId}`);
+      const activity = response.data;
+  
+      activity.volunteersForActivity.push(applyVolunteer);
+  
+      await axios.put(`http://localhost:3001/activities/${definedId}`, activity);
+  
+      console.log('Volunteer added to activity successfully:', applyVolunteer);
+    } catch (error) {
+      console.error('Error adding volunteer to activity:', error);
+    }
+  };
+
   const sendData = () => {
     if (!validateForm(applyVolunteer)) {
       return;
     }
-    update(applyVolunteer);
+    addVolunteerToActivity()
+    update((prevState: VolunteerForJob[]) => [...prevState, applyVolunteer])
     showModal(false);
   };
 
@@ -51,13 +94,14 @@ const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
     "Complete the form below to apply for participation in this activity. Your details will help us ensure a smooth and enjoyable experience for all volunteers involved.";
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles[deviceType]}`}>
       <FormInfo title={title} subtitle={subtitle} paragraph={paragraph} />
       <div className={styles.form}>
         <TextInputComponent
           type="text"
           name="name"
           label="Name"
+          value={applyVolunteer.name}
           multiline={false}
           onChange={handleInputChange}
         />
@@ -65,6 +109,7 @@ const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
           type="text"
           name="surname"
           label="Surname"
+          value={applyVolunteer.surname}
           multiline={false}
           onChange={handleInputChange}
         />

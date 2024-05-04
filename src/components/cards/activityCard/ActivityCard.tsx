@@ -1,6 +1,6 @@
+import styles from "./ActivityCard.module.css";
 import useWindowSize from "../../../util/useWindowSize";
 import ButtonComponent from "../../button/ButtonComponent";
-import styles from "./ActivityCard.module.css";
 import activityImg from "../../../../public/assets/activity-img.png";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";

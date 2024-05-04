@@ -1,14 +1,19 @@
 .activityDetails {
     flex-direction: column;
+    min-height: fit-content;
+    margin-bottom: 5rem;
     
     .activityMembers {
         min-height: 20rem;
-        margin-top: 1rem;
+        margin-top: 4rem;
         align-items: flex-start;
         text-align: start;
 
-        h2 {
-            font-size: calc(1.1rem + 1vw);
+        & > *:first-child {
+            align-items: flex-start;
+            h2 {
+                font-size: calc(1.1rem + 1vw);
+            }
         }
     }
 }

@@ -5,12 +5,14 @@ import Rating from "@mui/material/Rating";
 interface RatingInputComponentProps {
   readOnly: boolean;
   value: number
+  sizeLg: boolean;
   onChange?: (name: string, value: number | null) => void;
 }
 
 const RatingInputComponent: React.FC<RatingInputComponentProps> = ({
   readOnly,
   value,
+  sizeLg,
   onChange,
 }) => {
   const [inputValue, setInputValue] = React.useState<number | null>(2);
@@ -34,6 +36,7 @@ const RatingInputComponent: React.FC<RatingInputComponentProps> = ({
             setInputValue(newValue);
         }}
         precision={0.5}
+        size={sizeLg ? "large" : "medium"}
         readOnly={readOnly}
       />
     </Box>

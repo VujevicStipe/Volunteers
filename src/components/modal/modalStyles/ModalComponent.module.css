@@ -5,14 +5,14 @@
     background-color: white;
     height: fit-content;
     border-radius: 2rem;
-    padding: 2rem 3rem;
+    padding: calc(1rem + 1vw) calc(1.3rem + 1vw);
     background-color: #F6F8FA;
     position: relative;
 
     & > *:last-child {
         position: absolute;
-        left: 2rem;
-        bottom: 2rem;
+        left: calc(1.3rem + 1vw);
+        bottom: calc(1rem + 1vw);
     }
 }
 
@@ -25,4 +25,8 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 100;
     display: flex;
+}
+
+.modalStyle.mobile { 
+    width: 90%;
 }

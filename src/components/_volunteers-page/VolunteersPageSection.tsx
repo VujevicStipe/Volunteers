@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import BannerComponent from "../banner/BannerComponent";
 import styles from "./VolunteersPageSection.module.css";
+import BannerComponent from "../banner/BannerComponent";
 import axios from "axios";
 import apiUrl from "../../util/config";
 import ButtonComponent from "../button/ButtonComponent";
 import VolunteerCard from "../cards/volunteerCard/VolunteerCard";
 import FilterComponent from "../filter/FilterComponent";
 import ModalComponent from "../modal/ModalComponent";
+import useWindowSize from "../../util/useWindowSize";
+import AccordionComponent from "../accordion/AccordionComponent";
 
 const VolunteersPageSection: React.FC = () => {
+  const deviceType = useWindowSize();
+
   const [volunteers, setVolunteers] = useState<Volunteer[]>([]);
   const [filteredVolunteers, setFilteredVolunteers] = useState<Volunteer[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -33,8 +37,8 @@ const VolunteersPageSection: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log(filteredVolunteers)
-  }, [filteredVolunteers])
+    console.log(filteredVolunteers);
+  }, [filteredVolunteers]);
 
   const [numOfVolunteers, setNumOfVolunteers] = useState<number>(0);
   useEffect(() => {
@@ -45,7 +49,7 @@ const VolunteersPageSection: React.FC = () => {
   const title = "Meet Other Volunteers";
 
   return (
-    <div className={styles.volunteersPageSection}>
+    <div className={`${styles.volunteersPageSection} ${styles[deviceType]}`}>
       <BannerComponent pic="volunteers" title={title} />
       <div className={styles.volunteersFilter}>
         <div className={styles.filterHeading}>
@@ -58,16 +62,31 @@ const VolunteersPageSection: React.FC = () => {
         >
           add new volunteer
         </ButtonComponent>
-        <FilterComponent
-          items={volunteers}
-          filters={filters}
-          onFilterChange={handleFilterChange}
-          setFilteredItems={setFilteredVolunteers}
-        />
+        {deviceType !== "mobile" ? (
+          <FilterComponent
+            items={volunteers}
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            setFilteredItems={setFilteredVolunteers}
+          />
+        ) : (
+          <AccordionComponent>
+            <FilterComponent
+              items={volunteers}
+              filters={filters}
+              onFilterChange={handleFilterChange}
+              setFilteredItems={setFilteredVolunteers}
+            />
+          </AccordionComponent>
+        )}
       </div>
       <div className={styles.volunteersList}>
         {filteredVolunteers.map((volunteer) => (
-          <VolunteerCard key={volunteer.id} volunteer={volunteer} variant="volunteer" />
+          <VolunteerCard
+            key={volunteer.id}
+            volunteer={volunteer}
+            variant="volunteer"
+          />
         ))}
       </div>
       <ModalComponent
@@ -75,6 +94,7 @@ const VolunteersPageSection: React.FC = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         update={setVolunteers}
+        itemId=""
       />
     </div>
   );

@@ -6,6 +6,7 @@ import NewActivityForm from "../addForms/NewActivityForm";
 import ButtonComponent from "../button/ButtonComponent";
 import NewVolunteerForm from "../addForms/NewVolunteerForm";
 import ApplyForActivityForm from "../addForms/ApplyForActivityForm";
+import useWindowSize from "../../util/useWindowSize";
 
 const dropIn = {
   hidden: {
@@ -33,6 +34,7 @@ interface ModalComponentProps<T> {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   variant: "newActivity" | "newVolunteer" | "applyForActivity";
   update: React.Dispatch<React.SetStateAction<T>>;
+  itemId: string;
 }
 
 const ModalComponent: React.FC<ModalComponentProps<any>> = ({
@@ -40,7 +42,10 @@ const ModalComponent: React.FC<ModalComponentProps<any>> = ({
   setShowModal,
   variant,
   update,
+  itemId,
 }) => {
+
+  const deviceType = useWindowSize()
 
   const variantComponents = {
     newActivity: NewActivityForm,
@@ -54,13 +59,13 @@ const ModalComponent: React.FC<ModalComponentProps<any>> = ({
     <Backdrop onClick={() => setShowModal(false)}>
       <motion.div
         onClick={(e) => e.stopPropagation()}
-        className={styles.modalStyle}
+        className={`${styles.modalStyle} ${styles[deviceType]}`}
         variants={dropIn}
         initial="hidden"
         animate="visible"
         exit="exit"
       >
-        <VariantForm update={update} showModal={setShowModal} />
+        <VariantForm update={update} showModal={setShowModal} itemId={itemId} />
         <ButtonComponent
           type="secondaryBtn"
           onClick={() => setShowModal(false)}

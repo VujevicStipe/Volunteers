@@ -43,3 +43,22 @@ export const TitleWrapH2 = styled.div`
     width: 7rem;
   }
 `;
+
+export const NavigateBackStyle = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: #9C9C9C;
+
+    & > *:first-child {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+      color: inherit;
+    }
+    h6 {    
+      font-weight: 100;
+      color: inherit;
+      font-size: 0.9rem;
+    }
+`;

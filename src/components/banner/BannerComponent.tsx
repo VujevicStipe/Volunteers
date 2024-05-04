@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./BannerComponent.module.css";
 import { TitleWrapH1 } from "../../styles/styles";
+import useWindowSize from "../../util/useWindowSize";
 
 interface BannerComponentProps {
   pic: "activities" | "volunteers" | "organisations";
@@ -13,10 +14,12 @@ const imageMap: Record<BannerComponentProps["pic"], string> = {
 };
 
 const BannerComponent: React.FC<BannerComponentProps> = ({ pic, title }) => {
+  
+  const deviceType = useWindowSize()
   const imageUrl = imageMap[pic];
 
   return (
-    <div className={styles.banner}>
+    <div className={`${styles.banner} ${styles[deviceType]}`}>
       <div className={styles.imgWrap}>
         <img src={imageUrl} alt="" />
       </div>
