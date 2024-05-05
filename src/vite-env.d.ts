@@ -17,6 +17,7 @@ type MyCities = {
 };
 
 type Rating = {
+  id: string;
   grade: number;
   name: string;
   surname: string;
@@ -26,11 +27,13 @@ type Rating = {
 type Activity = {
   id: string;
   title: string;
+  jobType: string;
   description: string;
   organisation: string;
   date: string;
   location: string;
   [key: string]: any;
+  image: string;
   volunteersForActivity: VolunteerForJob[];
 };
 
@@ -49,15 +52,16 @@ type Volunteer = {
 };
 
 type VolunteerForJob = {
+  id: string;
   name: string;
   surname: string;
   gender: string;
   userImg: string;
 };
 
-type Organisations = {
+type Organisation = {
   id: string;
   organisationName: string;
   adress: string;
-  city: MyCities;
+  location: string;
 };

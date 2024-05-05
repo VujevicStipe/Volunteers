@@ -1,6 +1,6 @@
 import axios from "axios";
 import styles from "./VolunteerDetailsSection.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import apiUrl from "../../util/config";
 import ItemDetailsComponent from "../itemDetailsComponent/ItemDetailsComponent";
 import { NavigateBackStyle, TitleWrapH2 } from "../../styles/styles";
@@ -11,6 +11,9 @@ import RatingStats from "./components/RatingStatsComponent";
 import useWindowSize from "../../util/useWindowSize";
 import { Link } from "react-router-dom";
 import { defineID } from "../../util/defineID";
+import { RoleManagerContext } from "../../util/RoleManagerContext";
+import DeleteRating from "./components/DeleteRating";
+import EditVolunteer from "./components/EditVolunteer";
 
 const VolunteerDetailsSection: React.FC<{ id: string | undefined }> = ({
   id,
@@ -18,10 +21,11 @@ const VolunteerDetailsSection: React.FC<{ id: string | undefined }> = ({
   if (!id) {
     return null;
   }
+
   const deviceType = useWindowSize();
+  const roleContext = useContext(RoleManagerContext);
 
   const [volunteer, setVolunteer] = useState<Volunteer>();
-  const [ratings, setRatings] = useState<Rating[]>();
 
   useEffect(() => {
     axios
@@ -29,7 +33,6 @@ const VolunteerDetailsSection: React.FC<{ id: string | undefined }> = ({
       .then((res) => {
         const response = res.data;
         setVolunteer(response);
-        setRatings(response.volunteerRating);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -42,23 +45,37 @@ const VolunteerDetailsSection: React.FC<{ id: string | undefined }> = ({
           <h6>back to Volunteers</h6>
         </NavigateBackStyle>
       </Link>
-      <ItemDetailsComponent data={volunteer} variant="volunteer" />
+      <ItemDetailsComponent data={volunteer} variant="volunteer">
+        {roleContext && roleContext.role === "admin" && (
+          <EditVolunteer volunteer={volunteer} update={setVolunteer} />
+        )}
+      </ItemDetailsComponent>
       <TitleWrapH2>
         <h2>Volunteer Voices: Ratings & Reviews</h2>
         <span></span>
       </TitleWrapH2>
       <div className={styles.volunteerRatings}>
         <div className={styles.rateVolunteer}>
-          {ratings && <RatingStats data={ratings} />}
+          {volunteer && <RatingStats data={volunteer?.volunteerRating} />}
           <h4>
             Rate {volunteer?.name} {volunteer?.surname}
           </h4>
-          <RatingFormComponent update={setRatings} itemId={id} />
+          <RatingFormComponent update={setVolunteer} itemId={id} />
         </div>
         <div className={styles.ratings}>
-          {ratings?.map((rating) => {
-            return <RatingCardComponent key={rating.name} data={rating} />;
-          })}
+          {roleContext && roleContext.role === "admin"
+            ? volunteer?.volunteerRating?.map((rating) => (
+                <RatingCardComponent key={rating.id} data={rating}>
+                  <DeleteRating
+                    volunteerId={id}
+                    itemId={rating.id}
+                    update={setVolunteer}
+                  />
+                </RatingCardComponent>
+              ))
+            : volunteer?.volunteerRating?.map((rating) => (
+                <RatingCardComponent key={rating.id} data={rating} />
+              ))}
         </div>
       </div>
     </div>

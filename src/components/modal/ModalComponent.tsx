@@ -6,6 +6,7 @@ import NewActivityForm from "../addForms/NewActivityForm";
 import ButtonComponent from "../button/ButtonComponent";
 import NewVolunteerForm from "../addForms/NewVolunteerForm";
 import ApplyForActivityForm from "../addForms/ApplyForActivityForm";
+import NewOrganisationForm from '../addForms/NewOrganisationForm'
 import useWindowSize from "../../util/useWindowSize";
 
 const dropIn = {
@@ -32,9 +33,10 @@ const dropIn = {
 interface ModalComponentProps<T> {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-  variant: "newActivity" | "newVolunteer" | "applyForActivity";
+  variant: "newActivity" | "newVolunteer" | "newOrganisation" | "applyForActivity" | "editActivity" | "editVolunteer";
   update: React.Dispatch<React.SetStateAction<T>>;
   itemId: string;
+  data?: any;
 }
 
 const ModalComponent: React.FC<ModalComponentProps<any>> = ({
@@ -43,6 +45,7 @@ const ModalComponent: React.FC<ModalComponentProps<any>> = ({
   variant,
   update,
   itemId,
+  data,
 }) => {
 
   const deviceType = useWindowSize()
@@ -50,7 +53,10 @@ const ModalComponent: React.FC<ModalComponentProps<any>> = ({
   const variantComponents = {
     newActivity: NewActivityForm,
     newVolunteer: NewVolunteerForm,
-    applyForActivity: ApplyForActivityForm
+    applyForActivity: ApplyForActivityForm,
+    editActivity: NewActivityForm,
+    editVolunteer: NewVolunteerForm,
+    newOrganisation: NewOrganisationForm,
   }
 
   const VariantForm = variantComponents[variant]
@@ -65,7 +71,7 @@ const ModalComponent: React.FC<ModalComponentProps<any>> = ({
         animate="visible"
         exit="exit"
       >
-        <VariantForm update={update} showModal={setShowModal} itemId={itemId} />
+        <VariantForm data={data} update={update} showModal={setShowModal} itemId={itemId} />
         <ButtonComponent
           type="secondaryBtn"
           onClick={() => setShowModal(false)}

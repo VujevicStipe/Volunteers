@@ -43,7 +43,7 @@
     flex-direction: column;
 }
 .volunteerCard.row {
-    width: 20rem;
+    width: 25rem;
     flex-direction: row;
     justify-content: space-between;
     

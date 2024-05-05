@@ -8,11 +8,13 @@ import { fetchUserImg } from "../../util/fetchUserImg";
 import { validateForm } from "../../util/validateForm";
 import useWindowSize from "../../util/useWindowSize";
 import axios from "axios";
+import { generateRandomId } from "../../util/defineID";
 
 interface ApplyForActivityFormProps<T> {
   update: React.Dispatch<React.SetStateAction<T>>;
   showModal: React.Dispatch<React.SetStateAction<boolean>>;
   itemId: string;
+  data?: any;
 }
 
 const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
@@ -20,16 +22,15 @@ const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
   showModal,
   itemId,
 }) => {
-
-  if(!itemId) {
-    return null
+  if (!itemId) {
+    return null;
   }
 
-  const deviceType = useWindowSize()
+  const deviceType = useWindowSize();
 
   useEffect(() => {
-    console.log(defineID(itemId))
-  }, [])
+    console.log(defineID(itemId));
+  }, []);
 
   const [applyVolunteer, setApplyVolunteer] = useState({
     name: "",
@@ -64,18 +65,28 @@ const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
   };
 
   const addVolunteerToActivity = async () => {
-    const definedId = defineID(itemId)
+    const definedId = defineID(itemId);
     try {
-      const response = await axios.get(`http://localhost:3001/activities/${definedId}`);
+      const response = await axios.get(
+        `http://localhost:3001/activities/${definedId}`
+      );
       const activity = response.data;
-  
-      activity.volunteersForActivity.push(applyVolunteer);
-  
-      await axios.put(`http://localhost:3001/activities/${definedId}`, activity);
-  
-      console.log('Volunteer added to activity successfully:', applyVolunteer);
+
+      const id = generateRandomId();
+      const { ...volunteerData } = applyVolunteer;
+      const updatedVolunteer = { id, ...volunteerData };
+
+      activity.volunteersForActivity.push(updatedVolunteer);
+
+      await axios.put(
+        `http://localhost:3001/activities/${definedId}`,
+        activity
+      );
+
+      update(activity);
+      console.log("Volunteer added to activity successfully:", applyVolunteer);
     } catch (error) {
-      console.error('Error adding volunteer to activity:', error);
+      console.error("Error adding volunteer to activity:", error);
     }
   };
 
@@ -83,8 +94,7 @@ const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
     if (!validateForm(applyVolunteer)) {
       return;
     }
-    addVolunteerToActivity()
-    update((prevState: VolunteerForJob[]) => [...prevState, applyVolunteer])
+    addVolunteerToActivity();
     showModal(false);
   };
 

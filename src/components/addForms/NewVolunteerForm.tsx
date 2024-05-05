@@ -17,30 +17,30 @@ interface NewVolunteerFormProps<T> {
   update: React.Dispatch<React.SetStateAction<T>>;
   showModal: React.Dispatch<React.SetStateAction<boolean>>;
   itemId?: string;
+  data?: any;
 }
 
 const NewVolunteerForm: React.FC<NewVolunteerFormProps<Volunteer[]>> = ({
   update,
   showModal,
+  data,
 }) => {
   const deviceType = useWindowSize();
+  const isData = !!data && Object.keys(data).length > 0;
 
   const [newVolunteer, setNewVolunteer] = useState({
-    name: "",
-    surname: "",
-    description: "",
-    contactNumber: "",
-    jobType: "",
-    location: "",
-    workExp: "",
-    gender: "",
-    userImg: "",
-    volunteerRating: [],
+    name: isData ? data?.name : "",
+    surname: isData ? data?.surname : "",
+    description: isData ? data?.description : "",
+    contactNumber: isData ? data?.contactNumber : "",
+    jobType: isData ? data?.jobType : "",
+    location: isData ? data?.location : "",
+    workExp: isData ? data?.workExp : "",
+    gender: isData ? data?.gender : "",
+    userImg: isData ? data?.userImg : "",
+    volunteerRating: isData ? data?.volunteerRating : [],
   });
 
-  useEffect(() => {
-    console.log(newVolunteer);
-  }, [newVolunteer]);
   const handleInputChange = (name: string, value: string) => {
     if (name === "name" || name === "surname" || name === "description") {
       value = value.charAt(0).toUpperCase() + value.slice(1);
@@ -54,18 +54,33 @@ const NewVolunteerForm: React.FC<NewVolunteerFormProps<Volunteer[]>> = ({
     if (!validateForm(volunterData)) {
       return;
     }
-    console.log("added", newVolunteer);
-    axios
-      .post(`${apiUrl}/volunteers`, newVolunteer, {
-        headers: {
-          "content-type": "application/json",
-        },
-      })
-      .then((res) => {
-        update((prevState: any) => [...prevState, res.data]);
-        showModal(false);
-      })
-      .catch((err) => console.log(err));
+
+    if (isData) {
+      console.log(data?.id);
+      axios
+        .put(`${apiUrl}/volunteers/${data.id}`, newVolunteer, {
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+        .then((res) => {
+          update(res.data);
+          console.log("volunteer updated");
+          showModal(false);
+        });
+    } else {
+      axios
+        .post(`${apiUrl}/volunteers`, newVolunteer, {
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+        .then((res) => {
+          update((prevState: any) => [...prevState, res.data]);
+          showModal(false);
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   //getUserImg
@@ -73,17 +88,20 @@ const NewVolunteerForm: React.FC<NewVolunteerFormProps<Volunteer[]>> = ({
     newVolunteer.userImg = await fetchUserImg(newVolunteer.gender);
   };
   useEffect(() => {
-    if (newVolunteer.gender !== "") {
-      fetchImg();
+    if (!isData) {
+      if (newVolunteer.gender !== "") {
+        fetchImg();
+      }
+      console.log(newVolunteer.gender);
     }
-    console.log(newVolunteer.gender);
   }, [newVolunteer.gender]);
   // setImg(`https://randomuser.me/api/portraits/${gender}/32.jpg`)
 
-  const title = "Add New Volunteer";
-  const subtitle = "Expanding the Squad";
-  const paragraph =
-    "Complete the form below to add new volunteer for hire. Your details will help us ensure a smooth and enjoyable experience for all volunteers involved.";
+  const title = isData ? "Make changes" : "Add New Volunteer";
+  const subtitle = isData ? "Edit Volunteer" : "Expanding the Squad";
+  const paragraph = isData
+    ? "Change the form below to Edit volunteer."
+    : "Complete the form below to add new volunteer for hire. Your details will help us ensure a smooth and enjoyable experience for all volunteers involved.";
 
   return (
     <div className={`${styles.container} ${styles[deviceType]}`}>
@@ -124,22 +142,28 @@ const NewVolunteerForm: React.FC<NewVolunteerFormProps<Volunteer[]>> = ({
             multiline={false}
             onChange={handleInputChange}
           />
-          <SelectInputComponent
-            variant="gender"
-            label="Gender"
-            name="gender"
-            onChange={handleInputChange}
-          />
+          {!isData && (
+            <SelectInputComponent
+              variant="gender"
+              label="Gender"
+              name="gender"
+              onChange={handleInputChange}
+            />
+          )}
         </div>
-        <div className={styles.wrapper}>
-          <CategoryInput variant="input" onChange={handleInputChange} />
-          <LocationInput onChange={handleInputChange} />
-        </div>
-        <div className={styles.wrapper}>
-          <WorkExpInput onChange={handleInputChange} />
-        </div>
+        {!isData && (
+          <div className={styles.wrapper}>
+            <CategoryInput variant="input" onChange={handleInputChange} />
+            <LocationInput onChange={handleInputChange} />
+          </div>
+        )}
+        {!isData && (
+          <div className={styles.wrapper}>
+            <WorkExpInput onChange={handleInputChange} />
+          </div>
+        )}
         <ButtonComponent onClick={() => sendData()} type="primaryBtn">
-          Volonteer!
+          {isData ? "Change" : "Volunteer!"}
         </ButtonComponent>
       </div>
     </div>

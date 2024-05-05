@@ -1,0 +1,59 @@
+.delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 3rem;
+    width: 4rem;
+    color: red;
+    background-color: #FBFBFB;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 0.3rem 0.3rem 0.3rem 1.5rem;
+    cursor: pointer;
+
+    & > * {
+        width: 60%;
+        height: 60%;
+    }
+}
+
+.edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 3rem;
+    width: 4rem;
+    color: green;
+    background-color: #FBFBFB;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 0.3rem 0.3rem 0.3rem 1.5rem;
+    cursor: pointer;
+
+    & > * {
+        width: 60%;
+        height: 60%;
+    }
+}
+
+.accept {
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    height: 3rem;
+    width: 4rem;
+    color: green;
+    background-color: #FBFBFB;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 0.3rem 0.3rem 0.3rem 1.5rem;
+    cursor: pointer;
+
+    & > * {
+        width: 60%;
+        height: 60%;
+    }
+}

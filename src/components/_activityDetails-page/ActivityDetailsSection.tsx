@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./ActivityDetailsSection.module.css";
 import axios from "axios";
 import apiUrl from "../../util/config";
@@ -9,6 +9,9 @@ import ModalComponent from "../modal/ModalComponent";
 import VolunteerCard from "../cards/volunteerCard/VolunteerCard";
 import ItemDetailsComponent from "../itemDetailsComponent/ItemDetailsComponent";
 import { defineID } from "../../util/defineID";
+import DeleteAppliedVolunteers from "./components/DeleteAppliedVolunteers";
+import { RoleManagerContext } from "../../util/RoleManagerContext";
+import EditActivity from "./components/EditActivity";
 
 const ActivityDetailsSection: React.FC<{ id: string | undefined }> = ({
   id,
@@ -17,9 +20,10 @@ const ActivityDetailsSection: React.FC<{ id: string | undefined }> = ({
     return null;
   }
 
+  const roleContext = useContext(RoleManagerContext)
+
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [activity, setActivity] = useState<Activity>();
-  const [volunteers, setVolunteers] = useState<VolunteerForJob[]>([]);
+  const [activity, setActivity] = useState<Activity | undefined>();
 
   useEffect(() => {
     const definedId = defineID(id);
@@ -28,7 +32,6 @@ const ActivityDetailsSection: React.FC<{ id: string | undefined }> = ({
       .then((res) => {
         const response = res.data;
         setActivity(response);
-        setVolunteers(response.volunteersForActivity);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -45,29 +48,45 @@ const ActivityDetailsSection: React.FC<{ id: string | undefined }> = ({
         data={activity}
         variant="activity"
         onClick={() => setShowModal(!showModal)}
-      />
+      >
+        {roleContext && roleContext.role === "admin" && (
+          <EditActivity activity={activity} update={setActivity} />
+        )}
+      </ItemDetailsComponent>
       <div className={styles.activityMembers}>
         <TitleWrapH2>
           <h2>Volunteer crew: who's in?</h2>
           <span></span>
         </TitleWrapH2>
-        {volunteers?.map((volunteer) => (
-          <VolunteerCard
-            key={`${volunteer.name}_${volunteer.surname}`}
-            volunteer={volunteer}
-            variant="volunteerApply"
-          />
-        ))}
+        {roleContext && roleContext.role === "admin"
+          ? activity?.volunteersForActivity?.map((volunteer) => (
+              <VolunteerCard
+                key={volunteer.id}
+                volunteer={volunteer}
+                variant="volunteerApply"
+              >
+                <DeleteAppliedVolunteers
+                  activityId={id}
+                  itemId={volunteer.id}
+                  update={setActivity}
+                />
+              </VolunteerCard>
+            ))
+          : activity?.volunteersForActivity?.map((volunteer) => (
+              <VolunteerCard
+                key={volunteer.id}
+                volunteer={volunteer}
+                variant="volunteerApply"
+              />
+            ))}
       </div>
-      {typeof id !== undefined && (
-        <ModalComponent
-          variant="applyForActivity"
-          showModal={showModal}
-          setShowModal={setShowModal}
-          update={setVolunteers}
-          itemId={id}
-        />
-      )}
+      <ModalComponent
+        variant="applyForActivity"
+        showModal={showModal}
+        setShowModal={setShowModal}
+        update={setActivity}
+        itemId={id}
+      />
     </div>
   );
 };

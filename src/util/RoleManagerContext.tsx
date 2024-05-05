@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 
 type RoleContextType = {
   role: string;
@@ -25,8 +25,10 @@ export const RoleManagerProvider = ({
   const [role, setRole] = useState<"user" | "admin">("user");
 
   return (
-    <RoleManagerContext.Provider value={{ role, setRole }}>
-      {children}
-    </RoleManagerContext.Provider>
+    <>
+      <RoleManagerContext.Provider value={{ role, setRole }}>
+        {children}
+      </RoleManagerContext.Provider>
+    </>
   );
 };

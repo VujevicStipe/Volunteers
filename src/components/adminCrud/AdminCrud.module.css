@@ -1,0 +1,25 @@
+.adminCrud {
+    width: 7rem;
+    height: 4rem;
+    background-color: #FBFBFB;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+
+    & > * {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & > *{
+            width: 60%;
+            height: 60%;
+        }
+    }
+    & > *:first-child {
+        color: red;
+    }
+}

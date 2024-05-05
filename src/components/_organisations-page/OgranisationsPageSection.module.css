@@ -1,0 +1,76 @@
+.organisationsPageSection {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+
+    .organisationsFilter {
+        width: 28%;
+        display: flex;
+        flex-direction: column;
+
+        .filterHeading {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+    
+            h4 {
+                margin-left: 1rem;
+                font-weight: 100;
+            }
+        }
+        & > *:nth-child(2) {
+            margin: 0.7rem 0 1.3rem 0;
+        }
+    }
+    .organisationsList {
+        width: 70%;
+        margin-bottom: 4rem;
+
+        .wrapper {
+            margin-bottom: 4rem;
+
+            & > * {
+                margin-bottom: 2rem;
+            }
+            h2 {
+                text-align: start;
+            }
+        }
+    }
+}
+
+.organisationsPageSection.tablet {
+    .organisationsList {
+        align-items: space-between;
+        .wrapper {
+            width: 100%;
+            margin-left: 2rem;
+        }
+    }
+}
+
+.organisationsPageSection.mobile {
+    .organisationsFilter {
+        width: 100%;
+
+        & > *:nth-child(3) {
+            margin-bottom: 2.3rem;
+        }
+    }
+    .organisationsList {
+        justify-content: space-between;
+        align-items: space-between;
+        width: 100%;
+
+        & > * {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+    }
+}

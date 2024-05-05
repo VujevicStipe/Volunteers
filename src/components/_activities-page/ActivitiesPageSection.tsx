@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./ActivitiesPageSection.module.css";
 import BannerComponent from "../banner/BannerComponent";
 import apiUrl from "../../util/config";
@@ -9,9 +9,12 @@ import ButtonComponent from "../button/ButtonComponent";
 import ModalComponent from "../modal/ModalComponent";
 import useWindowSize from "../../util/useWindowSize";
 import AccordionComponent from "../accordion/AccordionComponent";
+import { RoleManagerContext } from "../../util/RoleManagerContext";
+import DeleteActivity from "./components/DeleteActivity";
 
 const ActivitiesPageSection: React.FC = () => {
   const deviceType = useWindowSize();
+  const roleContext = useContext(RoleManagerContext);
 
   const [activities, setActivities] = useState<Activity[]>([]);
   const [filteredActivities, setFilteredActivities] = useState<Activity[]>([]);
@@ -31,7 +34,6 @@ const ActivitiesPageSection: React.FC = () => {
     location: "",
     jobType: "",
   });
-
   const handleFilterChange = (name: string, value: string) => {
     setFilters({ ...filters, [name]: value });
   };
@@ -75,9 +77,15 @@ const ActivitiesPageSection: React.FC = () => {
         )}
       </div>
       <div className={styles.activitiesList}>
-        {filteredActivities.map((activity) => (
-          <ActivityCard key={activity.id} activity={activity} />
-        ))}
+        {roleContext && roleContext.role === "admin"
+          ? filteredActivities.map((activity) => (
+              <ActivityCard key={activity.id} activity={activity}>
+                <DeleteActivity itemId={activity.id} update={setActivities} />
+              </ActivityCard>
+            ))
+          : filteredActivities.map((activity) => (
+              <ActivityCard key={activity.id} activity={activity} />
+            ))}
       </div>
       <ModalComponent
         variant="newActivity"

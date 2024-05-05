@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./VolunteersPageSection.module.css";
 import BannerComponent from "../banner/BannerComponent";
 import axios from "axios";
@@ -9,9 +9,12 @@ import FilterComponent from "../filter/FilterComponent";
 import ModalComponent from "../modal/ModalComponent";
 import useWindowSize from "../../util/useWindowSize";
 import AccordionComponent from "../accordion/AccordionComponent";
+import { RoleManagerContext } from "../../util/RoleManagerContext";
+import DeleteVolunteer from "./components/DeleteVolunteer";
 
 const VolunteersPageSection: React.FC = () => {
   const deviceType = useWindowSize();
+  const roleContext = useContext(RoleManagerContext);
 
   const [volunteers, setVolunteers] = useState<Volunteer[]>([]);
   const [filteredVolunteers, setFilteredVolunteers] = useState<Volunteer[]>([]);
@@ -36,10 +39,6 @@ const VolunteersPageSection: React.FC = () => {
     setFilters({ ...filters, [name]: value });
   };
 
-  useEffect(() => {
-    console.log(filteredVolunteers);
-  }, [filteredVolunteers]);
-
   const [numOfVolunteers, setNumOfVolunteers] = useState<number>(0);
   useEffect(() => {
     setNumOfVolunteers(volunteers.length);
@@ -56,12 +55,15 @@ const VolunteersPageSection: React.FC = () => {
           <h3>Volunteers</h3>
           <h4>({numOfVolunteers})</h4>
         </div>
-        <ButtonComponent
-          type="primaryBtn"
-          onClick={() => setShowModal(!showModal)}
-        >
-          add new volunteer
-        </ButtonComponent>
+        {roleContext && roleContext.role === "admin" && (
+          <ButtonComponent
+            type="primaryBtn"
+            onClick={() => setShowModal(!showModal)}
+          >
+            add new volunteer
+          </ButtonComponent>
+        )}
+
         {deviceType !== "mobile" ? (
           <FilterComponent
             items={volunteers}
@@ -81,13 +83,19 @@ const VolunteersPageSection: React.FC = () => {
         )}
       </div>
       <div className={styles.volunteersList}>
-        {filteredVolunteers.map((volunteer) => (
-          <VolunteerCard
-            key={volunteer.id}
-            volunteer={volunteer}
-            variant="volunteer"
-          />
-        ))}
+        {roleContext && roleContext.role === "admin"
+          ? filteredVolunteers.map((volunteer) => (
+              <VolunteerCard key={volunteer.id} volunteer={volunteer} variant="volunteer">
+                <DeleteVolunteer itemId={volunteer.id} update={setVolunteers} />
+              </VolunteerCard>
+            ))
+          : filteredVolunteers.map((volunteer) => (
+              <VolunteerCard
+                key={volunteer.id}
+                volunteer={volunteer}
+                variant="volunteer"
+              />
+            ))}
       </div>
       <ModalComponent
         variant="newVolunteer"

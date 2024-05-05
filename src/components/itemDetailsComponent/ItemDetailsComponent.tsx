@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styles from "./styles/ItemDetailsComponent.module.css";
 import { LiaPeopleCarrySolid } from "react-icons/lia";
 import { CiCalendarDate } from "react-icons/ci";
@@ -15,12 +15,14 @@ interface ItemDetailsComponentProps {
   data?: Activity | Volunteer;
   variant: "activity" | "volunteer";
   onClick?: () => void;
+  children?: ReactNode;
 }
 
 const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
   data,
   variant,
   onClick,
+  children,
 }) => {
 
   const deviceType = useWindowSize()
@@ -37,7 +39,7 @@ const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
 
         return (
           <>
-            <img src={actImg} alt="" />
+            <img src={activityData.image} alt="" />
             <div className={styles.info}>
               <div className={styles.wrapper}>
                 <h6>
@@ -68,6 +70,7 @@ const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
                 Apply Now
               </ButtonComponent>
             </div>
+            {children}
           </>
         );
       };
@@ -112,6 +115,7 @@ const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
                 </h6>
               </div>
             </div>
+            {children}
           </>
         );
       };

@@ -4,16 +4,18 @@ import RatingInputComponent from "../../inputComponents/components/RatingInputCo
 import TextInputComponent from "../../inputComponents/components/TextInputComponent";
 import { validateForm } from "../../../util/validateForm";
 import axios from "axios";
+import SnackbarComponent from "../../snackbar/SnackbarComponent";
+import useSnackbar from "../../../util/useSnackbar";
+import { defineID, generateRandomId } from "../../../util/defineID";
 
 interface RatingFormFormComponentProps<T> {
   itemId: string;
   update: React.Dispatch<SetStateAction<T>>;
 }
 
-const RatingFormComponent: React.FC<RatingFormFormComponentProps<any>> = ({
-  itemId,
-  update,
-}) => {
+const RatingFormComponent: React.FC<
+  RatingFormFormComponentProps<Volunteer | undefined>
+> = ({ itemId, update }) => {
   const [rating, setRating] = useState({
     grade: 0,
     name: "",
@@ -30,12 +32,6 @@ const RatingFormComponent: React.FC<RatingFormFormComponentProps<any>> = ({
     setRating({ ...rating, [name]: value });
   };
 
-  const defineID = (id: string) => {
-    return id
-      ? id.replace(":", "")
-      : (console.log("can't define url"), undefined);
-  };
-
   const addVolunteerToActivity = async () => {
     const definedId = defineID(itemId);
     try {
@@ -43,13 +39,19 @@ const RatingFormComponent: React.FC<RatingFormFormComponentProps<any>> = ({
         `http://localhost:3001/volunteers/${definedId}`
       );
       const volunteer = response.data;
-      volunteer.volunteerRating.push(rating);
+
+      const id = generateRandomId();
+      const { ...ratingData } = rating;
+      const updatedRating = { id, ...ratingData };
+
+      volunteer.volunteerRating.push(updatedRating);
 
       await axios.put(
         `http://localhost:3001/volunteers/${definedId}`,
         volunteer
       );
 
+      update(volunteer);
       console.log("Rating added to volunteer successfully:", volunteer);
     } catch (error) {
       console.error("Error adding rating to volunteer:", error);
@@ -61,7 +63,6 @@ const RatingFormComponent: React.FC<RatingFormFormComponentProps<any>> = ({
       return;
     }
     addVolunteerToActivity();
-    update((prevState: Rating[]) => [...prevState, rating]);
     setRating({ grade: 0, name: "", surname: "", comment: "" });
   };
 
