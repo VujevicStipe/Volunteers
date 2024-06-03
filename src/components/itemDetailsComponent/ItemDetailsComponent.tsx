@@ -7,7 +7,6 @@ import { MdOutlineWorkOutline } from "react-icons/md";
 import { GoVerified } from "react-icons/go";
 import { BsTelephoneInbound } from "react-icons/bs";
 import { TitleWrapH2 } from "../../styles/styles";
-import actImg from "../../../public/assets/activity-img.png";
 import ButtonComponent from "../button/ButtonComponent";
 import useWindowSize from "../../util/useWindowSize";
 
@@ -24,9 +23,8 @@ const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
   onClick,
   children,
 }) => {
+  const deviceType = useWindowSize();
 
-  const deviceType = useWindowSize()
-  
   if (!data) {
     return null;
   }
@@ -81,7 +79,11 @@ const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
 
         return (
           <>
-            <img className={styles.volunteerUserImg} src={volunteerData.userImg} alt="" />
+            <img
+              className={styles.volunteerUserImg}
+              src={volunteerData.userImg}
+              alt=""
+            />
             <div className={`${styles.info} ${styles.volunteerInfo}`}>
               <div className={styles.wrapper}>
                 <h6>
@@ -103,7 +105,9 @@ const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
                 </h6>
                 <h6>
                   <LiaPeopleCarrySolid />
-                  {volunteerData.workExperience ? "Work Experience" : "No Work Experience"}
+                  {volunteerData.workExperience
+                    ? "Work Experience"
+                    : "No Work Experience"}
                 </h6>
                 <h6>
                   <MdOutlineWorkOutline />
@@ -122,7 +126,11 @@ const ItemDetailsComponent: React.FC<ItemDetailsComponentProps> = ({
       break;
   }
 
-  return <div className={`${styles.itemContent} ${styles[deviceType]}`}>{itemData && itemData()}</div>;
+  return (
+    <div className={`${styles.itemContent} ${styles[deviceType]}`}>
+      {itemData && itemData()}
+    </div>
+  );
 };
 
 export default ItemDetailsComponent;

@@ -4,8 +4,6 @@ import RatingInputComponent from "../../inputComponents/components/RatingInputCo
 import TextInputComponent from "../../inputComponents/components/TextInputComponent";
 import { validateForm } from "../../../util/validateForm";
 import axios from "axios";
-import SnackbarComponent from "../../snackbar/SnackbarComponent";
-import useSnackbar from "../../../util/useSnackbar";
 import { defineID, generateRandomId } from "../../../util/defineID";
 
 interface RatingFormFormComponentProps<T> {
