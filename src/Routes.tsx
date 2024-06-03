@@ -6,7 +6,7 @@ import VolunteersPage from "./routes/VolunteersPage";
 import OrganisationsPage from "./routes/OrganisationsPage";
 import ActivityDetailsPage from "./routes/ActivityDetailsPage";
 import VolunteerDetailsPage from "./routes/VolunteerDetailsPage";
-import ScrollToTop from "./util/scrollToTop";
+import ScrollToTop from "./util/ScrollToTop";
 
 function Root() {
   return (
