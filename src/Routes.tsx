@@ -11,8 +11,8 @@ import ScrollToTop from "./util/scrollToTop";
 function Root() {
   return (
     <>
-      <ScrollToTop />
       <Routes>
+        <ScrollToTop />
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/activities" element={<ActivitiesPage />} />
@@ -21,7 +21,7 @@ function Root() {
             element={<ActivityDetailsPage />}
           />
           <Route path="/volunteers" element={<VolunteersPage />} />
-          <Route 
+          <Route
             path="/volunteers/details/:id"
             element={<VolunteerDetailsPage />}
           />
