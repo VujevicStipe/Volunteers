@@ -9,6 +9,7 @@ import { validateForm } from "../../util/validateForm";
 import useWindowSize from "../../util/useWindowSize";
 import axios from "axios";
 import { generateRandomId } from "../../util/defineID";
+import apiUrl from "../../util/config";
 
 interface ApplyForActivityFormProps<T> {
   update: React.Dispatch<React.SetStateAction<T>>;
@@ -67,9 +68,7 @@ const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
   const addVolunteerToActivity = async () => {
     const definedId = defineID(itemId);
     try {
-      const response = await axios.get(
-        `http://localhost:3001/activities/${definedId}`
-      );
+      const response = await axios.get(`${apiUrl}/activities/${definedId}`);
       const activity = response.data;
 
       const id = generateRandomId();
@@ -78,10 +77,7 @@ const ApplyForActivityForm: React.FC<ApplyForActivityFormProps<any>> = ({
 
       activity.volunteersForActivity.push(updatedVolunteer);
 
-      await axios.put(
-        `http://localhost:3001/activities/${definedId}`,
-        activity
-      );
+      await axios.put(`${apiUrl}/activities/${definedId}`, activity);
 
       update(activity);
       console.log("Volunteer added to activity successfully:", applyVolunteer);

@@ -5,6 +5,7 @@ import TextInputComponent from "../../inputComponents/components/TextInputCompon
 import { validateForm } from "../../../util/validateForm";
 import axios from "axios";
 import { defineID, generateRandomId } from "../../../util/defineID";
+import apiUrl from "../../../util/config";
 
 interface RatingFormFormComponentProps<T> {
   itemId: string;
@@ -33,9 +34,7 @@ const RatingFormComponent: React.FC<
   const addVolunteerToActivity = async () => {
     const definedId = defineID(itemId);
     try {
-      const response = await axios.get(
-        `http://localhost:3001/volunteers/${definedId}`
-      );
+      const response = await axios.get(`${apiUrl}/volunteers/${definedId}`);
       const volunteer = response.data;
 
       const id = generateRandomId();
@@ -44,10 +43,7 @@ const RatingFormComponent: React.FC<
 
       volunteer.volunteerRating.push(updatedRating);
 
-      await axios.put(
-        `http://localhost:3001/volunteers/${definedId}`,
-        volunteer
-      );
+      await axios.put(`${apiUrl}//volunteers/${definedId}`, volunteer);
 
       update(volunteer);
       console.log("Rating added to volunteer successfully:", volunteer);
