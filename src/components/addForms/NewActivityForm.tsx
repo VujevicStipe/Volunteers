@@ -11,13 +11,13 @@ import FormInfo from "./components/FormInfo";
 import { validateForm } from "../../util/validateForm";
 import useWindowSize from "../../util/useWindowSize";
 
-import teachingAssistent from "../../../public/assets/teaching-assistant.jpg";
-import eventCord from "../../../public/assets/event-cordinator.jpg";
-import fundraiser from "../../../public/assets/fundraising.jpg";
-import animalCaretaker from "../../../public/assets/activity-img.png";
-import outreachOrg from "../../../public/assets/community-outreach.jpg";
-import youthMentor from "../../../public/assets/youth-mentor.jpg";
-import mentalHealth from "../../../public/assets/mental-health-advocate.jpg";
+import teachingAssistent from "/assets/teaching-assistant.jpg";
+import eventCord from "/assets/event-cordinator.jpg";
+import fundraiser from "/assets/fundraising.jpg";
+import animalCaretaker from "/assets/activity-img.png";
+import outreachOrg from "/assets/community-outreach.jpg";
+import youthMentor from "/assets/youth-mentor.jpg";
+import mentalHealth from "/assets/mental-health-advocate.jpg";
 
 interface NewActivityFormProps<T> {
   update: React.Dispatch<React.SetStateAction<T>>;
