@@ -1,0 +1,106 @@
+.itemContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    img {
+        width: 47%;
+        min-height: 20rem;
+        object-fit: cover;
+        border-radius: 1.8rem;
+    }
+    .info {
+        width: 47%;
+        min-height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: start;
+        
+        .wrapper {
+            height: fit-content;
+            margin: 0.5rem 0;
+
+            & > *:last-child {
+                height: fit-content;
+                align-items: flex-start;
+                margin-bottom: 1rem;
+            }
+            h6 {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                font-weight: 100;
+                color: #9C9C9C;
+                font-size: calc(0.6rem + 0.3vw);
+
+                & > *:last-child {
+                    margin-right: 0.7rem;
+                }
+            }
+            span{
+                margin: 0;
+            }
+        }
+    }
+    .volunteerUserImg {
+        width: 27%;
+        min-height: 17rem;
+        border-radius: 50%;
+        object-fit: contain;
+    }
+    .volunteerInfo {
+        width: 63%;
+
+        .wrapper {
+            margin: 0;
+            & > *:nth-child(2) {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.itemContent.tablet {
+    .volunteerUserImg {
+        min-width: 220px;
+        min-height: 10rem;
+    }
+    .volunteerInfo {
+        min-width: 200px;
+        min-height: 17vh;
+
+        p {
+            margin: 1rem 0;
+        }
+    }
+}
+
+.itemContent.mobile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+
+    img {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .info {
+        width: 100%;
+
+        p {
+            font-size: calc(0.9rem + 0.3vw);
+        }
+        .wrapper {
+            h6 {
+                font-size: calc(0.75rem + 0.3vw);
+            }
+        }
+    }
+    
+}

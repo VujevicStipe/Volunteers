@@ -1,0 +1,100 @@
+.navList {
+    width: fit-content;
+    height: 70%;
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    & > * {
+        display: flex;
+        align-items: center;
+        margin: 0 0.2rem;
+    }
+    li {
+        height: 100%;
+        padding: 0 1rem;
+        transition: .2s ease-out;
+        border-radius: 0.5rem;
+
+        &:hover {
+            background-color: #E6E6E6;
+        }
+        &:hover a { 
+            color: black;
+        }
+    }
+    &>:last-child {
+        transition: .2s ease-out;
+        background-color: #E6E6E6;
+        color: white;
+        background-image: linear-gradient(to right, #fc5c7d, #6a82fb);;
+        &:hover {
+            
+            color: white;
+        }
+    }
+}
+
+.navList.footer {
+    flex-direction: column;
+
+    li {
+        padding: 0;
+    }
+    li:hover {
+        background: none;
+    }
+    &>:last-child {
+        background-image: none;
+        background: none;
+    }
+}
+
+.navListMargin {
+    margin-right: calc(1.8rem + 1vw);
+    
+    li { 
+        &:hover {
+            background-color: white;
+            color: black;
+        }
+        a {
+            color: white;
+        }
+    }
+    & >*:last-child {
+        background-image: none;
+        background-color: white;
+        color: black;
+
+        &:hover {
+            background-color: black;
+        }
+    }
+}
+
+.navListMargin.tablet {
+    margin-right: 0;
+    li {
+        &:hover {
+            background-color: black;
+        }
+        a {
+            color: black;
+            &:hover {
+                color: white;
+            }
+        }
+    }
+    & > *:last-child {
+        color: white;
+        background-color: black;
+
+        &:hover {
+            background-color: rgb(70, 70, 70);
+        }
+    }
+}

@@ -1,0 +1,78 @@
+.volunteerCard {
+    width: 100%;
+    min-width: 190px;
+    height: fit-content;
+    position: relative;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+        border-radius: 50%;
+        margin-bottom: 0.9rem;
+        width: 100%;
+        object-fit: contain;
+    }
+    &:hover img {
+        transform: scale(0.95);
+        transition: transform .3s ease-in-out;
+    }
+    h4 {
+        position: relative;
+    }
+    &::after {
+        content: ""; 
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto; 
+        width: 0%; 
+        height: 1px; 
+        background-image: linear-gradient(to right, #fc5c7d, #6a82fb);
+        transition: width .2s ease-in-out;
+    }
+    &:hover::after {
+        width: 50%;
+    }
+}
+
+.volunteerCard.col {
+    flex-direction: column;
+    min-width: 100px;
+}
+.volunteerCard.row {
+    width: 25rem;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    img {
+        width: 30%;
+    }
+    &::after {
+        width: 0; 
+        height: 0; 
+    }
+    h4 {
+        width: 60%;
+        text-align: start;
+        position: relative; 
+    }
+    h4::after {
+        content: ""; 
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+        width: 0%; 
+        height: 1px; 
+        background-image: linear-gradient(to right, #fc5c7d, #6a82fb);
+        transition: width .2s ease-in-out;
+    }
+}
+.volunteerCard.row:hover h4::after {
+    width: 50%; 
+}
+

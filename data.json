@@ -1,0 +1,313 @@
+{
+  "activities": [
+    {
+      "title": "Food Drive for the Homeless",
+      "description": "Volunteer activities encompass a wide range of opportunities for individuals to contribute their time, skills, and efforts towards various causes and initiatives. These activities can involve anything from assisting in community clean-up efforts and organizing fundraising events to providing support",
+      "jobType": "Community Outreach Organizer",
+      "organisation": "Compassionate Hearts Initiative",
+      "date": "2024-05-23",
+      "location": "Split",
+      "image": "/public/assets/community-outreach.jpg",
+      "volunteersForActivity": [
+        {
+          "id": "klfzji",
+          "name": "Mile",
+          "surname": "Kekin",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/99.jpg"
+        },
+        {
+          "id": "yeknvddqm",
+          "name": "Peter",
+          "surname": "Liam",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/71.jpg"
+        },
+        {
+          "id": "qlbfmmssy",
+          "name": "Lana",
+          "surname": "Lanic",
+          "gender": "women",
+          "userImg": "https://randomuser.me/api/portraits/women/51.jpg"
+        }
+      ],
+      "id": "fde0"
+    },
+    {
+      "id": "e4c8",
+      "title": "Assisting in Animal Shelter",
+      "description": "Volunteer activities encompass a wide range of opportunities for individuals to contribute their time, skills, and efforts towards various causes and initiatives. These activities can involve anything from assisting in community clean-up efforts",
+      "jobType": "Animal Caretaker",
+      "organisation": "Pets For Everyone",
+      "date": "2024-05-21",
+      "location": "Dubrovnik",
+      "image": "/public/assets/activity-img.png",
+      "volunteersForActivity": [
+        {
+          "id": "ignplmpcb",
+          "name": "Legolas",
+          "surname": "Lego",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/74.jpg"
+        },
+        {
+          "id": "hytaykdu",
+          "name": "Liah",
+          "surname": "Hamilton",
+          "gender": "women",
+          "userImg": "https://randomuser.me/api/portraits/women/35.jpg"
+        }
+      ]
+    },
+    {
+      "id": "dce3",
+      "title": "Workshop Organization for Children",
+      "description": "Volunteer activities encompass a wide range of opportunities for individuals to contribute their time, skills, and efforts towards various causes and initiatives. These activities can involve anything from assisting in community clean-up efforts and organizing fundraising events to providing support",
+      "jobType": "Teaching Assistant",
+      "organisation": "Good Brothers",
+      "date": "2024-05-22",
+      "location": "Dubrovnik",
+      "image": "/public/assets/teaching-assistant.jpg",
+      "volunteersForActivity": [
+        {
+          "id": "hvfjrzta",
+          "name": "Peter",
+          "surname": "Panek",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/38.jpg"
+        }
+      ]
+    },
+    {
+      "id": "6421",
+      "title": "Assisting For Charity Concert",
+      "description": "Volunteer activities encompass a wide range of opportunities for individuals to contribute their time, skills, and efforts towards various causes and initiatives. These activities can involve anything",
+      "jobType": "Event Coordinator",
+      "organisation": "Big Hearts",
+      "date": "2024-05-18",
+      "location": "Zagreb",
+      "image": "/public/assets/event-cordinator.jpg",
+      "volunteersForActivity": [
+        {
+          "id": "gqmhlmwg",
+          "name": "Mate",
+          "surname": "Matic",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/76.jpg"
+        },
+        {
+          "id": "ytwrh",
+          "name": "Ana",
+          "surname": "Anic",
+          "gender": "women",
+          "userImg": "https://randomuser.me/api/portraits/women/43.jpg"
+        }
+      ]
+    },
+    {
+      "id": "ba35",
+      "title": "Build School in Uganda",
+      "description": "By volunteering, individuals not only make a meaningful impact on their communities but also experience personal growth, develop new skills, and build valuable connections with others.",
+      "jobType": "Fundraiser",
+      "organisation": "Worldwide Goods",
+      "date": "2024-05-22",
+      "location": "Šibenik",
+      "image": "/public/assets/fundraising.jpg",
+      "volunteersForActivity": [
+        {
+          "id": "ktxfokhe",
+          "name": "Pero",
+          "surname": "Peric",
+          "gender": "men",
+          "userImg": "https://randomuser.me/api/portraits/men/23.jpg"
+        }
+      ]
+    }
+  ],
+  "volunteers": [
+    {
+      "name": "John",
+      "surname": "Smith",
+      "description": "A volunteer is an individual who dedicates their valuable time, energy, and resources to helping others or their community without expecting material compensation. Through their volunteer work, volunteers can contribute to various areas such as humanitarian aid",
+      "contactNumber": "096321245",
+      "jobType": "Fundraiser",
+      "location": "Dubrovnik",
+      "workExp": "true",
+      "gender": "men",
+      "userImg": "https://randomuser.me/api/portraits/men/4.jpg",
+      "volunteerRating": [
+        {
+          "id": "iapdhjymd",
+          "grade": 3.5,
+          "name": "Liam",
+          "surname": "Neeson",
+          "comment": "Their dedication, reliability, and positive attitude have greatly contributed to the success of our projects. They consistently demonstrate excellent communication skills"
+        },
+        {
+          "id": "grmamiv",
+          "grade": 4.5,
+          "name": "Lisa",
+          "surname": "Williams",
+          "comment": " They consistently demonstrate excellent communication skills adaptability, and a strong work ethic. Their passion for our cause shines through in everything they do"
+        },
+        {
+          "id": "slkfi",
+          "grade": 1.5,
+          "name": "Olivia",
+          "surname": "Jones",
+          "comment": "Adaptability, and a strong work ethic. Their passion for our cause shines through in everything they do"
+        }
+      ],
+      "id": "6421"
+    },
+    {
+      "id": "08af",
+      "name": "Emily",
+      "surname": "Johnson",
+      "description": "A volunteer is an individual who dedicates their valuable time, energy, and resources to helping others or their community without expecting material compensation. Through their volunteer work, volunteers can contribute to various areas such as humanitarian aid",
+      "contactNumber": "09845162",
+      "jobType": "Community Outreach Organizer",
+      "location": "Zadar",
+      "workExp": "",
+      "gender": "women",
+      "userImg": "https://randomuser.me/api/portraits/women/9.jpg",
+      "volunteerRating": [
+        {
+          "id": "oumvnjorm",
+          "grade": 4.5,
+          "name": "John",
+          "surname": "Bovi",
+          "comment": "Adaptability, and a strong work ethic. Their passion for our cause shines through in everything they do , and we are grateful for their commitment to making a difference in the community."
+        },
+        {
+          "id": "cosqqjvx",
+          "grade": 3.5,
+          "name": "William",
+          "surname": "Suarez",
+          "comment": "Has been an invaluable asset to our organization. Their dedication, reliability, and positive attitude have greatly contributed to the success of our projects."
+        },
+        {
+          "id": "dluduyexe",
+          "grade": 0.5,
+          "name": "Emily",
+          "surname": "Jones",
+          "comment": "Their dedication, reliability, and positive attitude have greatly contributed to the success of our projects. They consistently demonstrate excellent communication skills, adaptability, and a strong work ethic. "
+        }
+      ]
+    },
+    {
+      "id": "c30a",
+      "name": "James",
+      "surname": "Williams",
+      "description": "A volunteer is an individual who dedicates their valuable time, energy, and resources to helping others or their community without expecting material compensation. ",
+      "contactNumber": "092456782",
+      "jobType": "Teaching Assistant",
+      "location": "Split",
+      "workExp": "true",
+      "gender": "men",
+      "userImg": "https://randomuser.me/api/portraits/men/76.jpg",
+      "volunteerRating": [
+        {
+          "id": "jebusoizb",
+          "grade": 4.5,
+          "name": "Ana",
+          "surname": "Anic",
+          "comment": "Their dedication, reliability, and positive attitude have greatly contributed to the success of our projects. They consistently demonstrate excellent communication skills, adaptability"
+        }
+      ]
+    },
+    {
+      "id": "4ef0",
+      "name": "Olivia",
+      "surname": "Brown",
+      "description": "A volunteer is an individual who dedicates their valuable time, energy, and resources to helping others or their community without expecting material compensation. Their contribution often has a significant impact on improving the quality of life of other people and the community they serve",
+      "contactNumber": "095426875",
+      "jobType": "Event Coordinator",
+      "location": "Zadar",
+      "workExp": "",
+      "gender": "women",
+      "userImg": "https://randomuser.me/api/portraits/women/60.jpg",
+      "volunteerRating": []
+    }
+  ],
+  "organisations": [
+    {
+      "id": "902d",
+      "organisationName": "Woldwide Outreach",
+      "adress": "Londonska 57",
+      "location": "Zagreb",
+      "jobType": "Event Coordinator"
+    },
+    {
+      "id": "2d1d",
+      "organisationName": "Good Brothers",
+      "adress": "Slobode 12",
+      "location": "Šibenik",
+      "jobType": "Teaching Assistant"
+    },
+    {
+      "id": "d230",
+      "organisationName": "Love For Everyone",
+      "adress": "Sibenska 77",
+      "location": "Šibenik",
+      "jobType": "Youth Mentor"
+    }
+  ],
+  "pendingOrganisations": [],
+  "cities": [
+    {
+      "id": "1",
+      "city": "Split"
+    },
+    {
+      "id": "2",
+      "city": "Zadar"
+    },
+    {
+      "id": "3",
+      "city": "Zagreb"
+    },
+    {
+      "id": "4",
+      "city": "Šibenik"
+    },
+    {
+      "id": "5",
+      "city": "Dubrovnik"
+    },
+    {
+      "id": "6",
+      "city": "Osijek"
+    }
+  ],
+  "jobTypes": [
+    {
+      "id": "1",
+      "job": "Teaching Assistant"
+    },
+    {
+      "id": "2",
+      "job": "Event Coordinator"
+    },
+    {
+      "id": "3",
+      "job": "Fundraiser"
+    },
+    {
+      "id": "4",
+      "job": "Animal Caretaker"
+    },
+    {
+      "id": "5",
+      "job": "Community Outreach Organizer"
+    },
+    {
+      "id": "6",
+      "job": "Youth Mentor"
+    },
+    {
+      "id": "7",
+      "job": "Mental Health Advocate"
+    }
+  ]
+}

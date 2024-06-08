@@ -1,0 +1,30 @@
+.categoryFilter {
+    label {
+      width: 100%;
+      display: flex;
+      align-items: center;
+  
+      span {
+        margin-bottom: 1px;
+        font-size: calc(0.6rem + 0.3vw);
+      }
+      & > span:last-of-type {
+        width: 100%;
+      }
+    }
+  }
+  
+.dateFilter {
+    max-width: 100%;
+}
+
+.locationFilter {
+    width: 70%;
+}
+
+.workExpFilter {
+    span {
+        margin-bottom: 1px;
+        font-size: calc(0.6rem + 0.3vw);
+    }
+}

@@ -1,0 +1,32 @@
+.modalStyle {
+    margin: auto;
+    width: 80%;
+    max-width: 1000px;
+    background-color: white;
+    height: fit-content;
+    border-radius: 2rem;
+    padding: calc(1rem + 1vw) calc(1.3rem + 1vw);
+    background-color: #F6F8FA;
+    position: relative;
+
+    & > *:last-child {
+        position: absolute;
+        left: calc(1.3rem + 1vw);
+        bottom: calc(1rem + 1vw);
+    }
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: flex;
+}
+
+.modalStyle.mobile { 
+    width: 90%;
+}
