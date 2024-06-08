@@ -4,7 +4,7 @@
 
 The Volunteers Website is a platform designed to facilitate volunteer activities. Users can view a list of activities, sign up for them, and add new activities. The website also includes a section for displaying volunteers where users can leave reviews and ratings. Additionally, there is an organization page where users can submit organizations for approval or deletion by an administrator. Administrators have the ability to add volunteers available for volunteering.
 
-![Showcase](./assets/VolunteersMockup.png)
+![Showcase](.public/assets/VolunteersMockup.png)
 
 ## Technologies Used
 
