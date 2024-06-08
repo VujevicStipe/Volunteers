@@ -41,6 +41,7 @@
 
 .volunteerCard.col {
     flex-direction: column;
+    min-width: 100px;
 }
 .volunteerCard.row {
     width: 25rem;

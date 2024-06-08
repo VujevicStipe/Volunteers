@@ -43,7 +43,7 @@ const RatingFormComponent: React.FC<
 
       volunteer.volunteerRating.push(updatedRating);
 
-      await axios.put(`${apiUrl}//volunteers/${definedId}`, volunteer);
+      await axios.put(`${apiUrl}/volunteers/${definedId}`, volunteer);
 
       update(volunteer);
       console.log("Rating added to volunteer successfully:", volunteer);
