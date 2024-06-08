@@ -1,30 +1,47 @@
-# React + TypeScript + Vite
+# Volunteers Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+The Volunteers Website is a platform designed to facilitate volunteer activities. Users can view a list of activities, sign up for them, and add new activities. The website also includes a section for displaying volunteers where users can leave reviews and ratings. Additionally, there is an organization page where users can submit organizations for approval or deletion by an administrator. Administrators have the ability to add volunteers available for volunteering.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Showcase](./assets/VolunteersMockup.png)
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**
+- **TypeScript**
+- **CSS**
+- **HTML**
+- **JSON Server**
+- **Axios** for server communication
+- **React Router** for navigation
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- **Activity List**: Users can view a list of available volunteer activities and sign up for them.
+- **Add Activities**: Users can add new volunteer activities to the list.
+- **Volunteer Reviews**: Users can view volunteers and leave reviews and ratings.
+- **Organization Page**: Users can submit organizations for administrator review. Administrators can approve or delete organizations.
+- **User and Admin Management**: User and admin roles are managed using `useContext`, allowing role changes via button clicks. Admins have the ability to delete, edit, and approve organizations, as well as add volunteers who are available for volunteering. Regular users can perform all other actions.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Communication with Server
+
+The application communicates with a JSON Server for data management using Axios, which includes:
+
+- **Adding Data**: Users can add new activities and organizations.
+- **Fetching Data**: The website fetches the list of activities, volunteers, and organizations from the server.
+- **Deleting Data**: Users and administrators can delete activities and organizations.
+- **Editing Data**: Users can edit the details of activities and organizations.
+
+## Hosting
+
+- **Website**: The website is hosted on Netlify at [https://reliable-capybara-596906.netlify.app/](https://reliable-capybara-596906.netlify.app/).
+- **JSON Server**: The JSON Server is hosted on Render at [https://volunteers-jsonserver.onrender.com/](https://volunteers-jsonserver.onrender.com/).
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License.
