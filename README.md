@@ -38,6 +38,10 @@ The application communicates with a JSON Server for data management using Axios,
 - **Deleting Data**: Users and administrators can delete activities and organizations.
 - **Editing Data**: Users can edit the details of activities and organizations.
 
+## Design
+
+I created and designed the entire website from scratch using Figma. You can view the design here: [Figma Design](https://www.figma.com/design/74YzjhDLJeiYPmCYOUrePN/VolunteersWeb?node-id=0-1&t=YBgJpVVPxFug4rkc-1)
+
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
