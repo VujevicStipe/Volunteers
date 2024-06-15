@@ -11,6 +11,9 @@ The Volunteers Website is a platform designed to facilitate volunteer activities
 - **Website**: The website is hosted on Netlify at [https://reliable-capybara-596906.netlify.app/](https://reliable-capybara-596906.netlify.app/).
 - **JSON Server**: The JSON Server is hosted on Render at [https://volunteers-jsonserver.onrender.com/](https://volunteers-jsonserver.onrender.com/).
 
+## Note
+- If content is not loaded, please wait 10 seconds as the JSON server is hosted on Render and may have delays in responding.
+
 ## Technologies Used
 
 - **React**
